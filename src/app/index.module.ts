@@ -8,6 +8,7 @@ import { GithubContributor } from '../app/components/githubContributor/githubCon
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
+import { lbSidenav } from '../app/components/lbSidenav/lbSidenav.directive';
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -25,5 +26,6 @@ module lilybook {
     .service('webDevTec', WebDevTecService)
     .controller('MainController', MainController)
     .directive('acmeNavbar', acmeNavbar)
-    .directive('acmeMalarkey', acmeMalarkey);
+    .directive('acmeMalarkey', acmeMalarkey)
+    .directive('lbSidenav', lbSidenav);
 }
