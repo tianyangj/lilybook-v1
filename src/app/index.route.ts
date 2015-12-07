@@ -6,8 +6,12 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
       url: '',
       templateUrl: 'app/layouts/row.html'
     })
-    .state('app.home', {
+    .state('app.splash', {
       url: '/',
+      templateUrl: 'app/splash/splash.html'
+    })
+    .state('app.home', {
+      url: '/home',
       templateUrl: 'app/main/main.html',
       controller: 'MainController',
       controllerAs: 'main'
