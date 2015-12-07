@@ -8,6 +8,7 @@ import { GithubContributor } from '../app/components/githubContributor/githubCon
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
+import { lbHeader } from '../app/components/lbHeader/lbHeader.directive';
 import { lbSidenav } from '../app/components/lbSidenav/lbSidenav.directive';
 
 declare var malarkey: any;
@@ -27,5 +28,6 @@ module lilybook {
     .controller('MainController', MainController)
     .directive('acmeNavbar', acmeNavbar)
     .directive('acmeMalarkey', acmeMalarkey)
+    .directive('lbHeader', lbHeader)
     .directive('lbSidenav', lbSidenav);
 }
