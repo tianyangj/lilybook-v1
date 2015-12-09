@@ -12,7 +12,9 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
     })
     .state('app.login', {
       url: '/login',
-      templateUrl: 'app/login/login.html'
+      templateUrl: 'app/login/login.html',
+      controller: 'LoginController',
+      controllerAs: 'loginCtrl'
     })
     .state('app.home', {
       url: '/home',
