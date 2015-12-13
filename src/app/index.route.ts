@@ -10,13 +10,21 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
     })
     .state('app.splash', {
       url: '/',
-      templateUrl: 'app/splash/splash.html'
+      templateUrl: 'app/splash/splash.html',
+      data: { authNot: true }
     })
     .state('app.login', {
       url: '/login?redirect',
       templateUrl: 'app/login/login.html',
       controller: 'LoginController',
       controllerAs: 'loginCtrl',
+      data: { authNot: true }
+    })
+    .state('app.signup', {
+      url: '/signup?redirect',
+      templateUrl: 'app/signup/signup.html',
+      controller: 'SignupController',
+      controllerAs: 'signupCtrl',
       data: { authNot: true }
     })
     .state('app.account', {

@@ -6,6 +6,7 @@ import { runBlock } from './index.run';
 import { AppController } from './index.controller';
 import { MainController } from './main/main.controller';
 import { LoginController } from './login/login.controller';
+import { SignupController } from './signup/signup.controller';
 import { GithubContributor } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { AccountService } from '../app/services/account.service';
@@ -32,6 +33,7 @@ module lilybook {
     .controller('AppController', AppController)
     .controller('MainController', MainController)
     .controller('LoginController', LoginController)
+    .controller('SignupController', SignupController)
     .directive('acmeNavbar', acmeNavbar)
     .directive('acmeMalarkey', acmeMalarkey)
     .directive('lbHeader', lbHeader)

@@ -16,7 +16,7 @@ export class AppController {
 			this.account = account;
 		});
 
-		this.$rootScope.$on('EVENT_LOGIN', (event, account: IAccount) => {
+		this.$rootScope.$on('EVENT_SIGNUP', (event, account: IAccount) => {
 			this.account = account;
 		});
 
