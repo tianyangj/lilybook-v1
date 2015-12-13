@@ -1,26 +1,24 @@
 import { userMapper } from './mapper';
-
-export interface IAccount {
-  base: Parse.User,
-  id: string,
-  email: string,
-  firstname: string,
-  lastname: string
-}
+import { IAccount } from './account.model';
 
 export class AccountService {
 
   /** @ngInject */
-  constructor(private $q: angular.IQService) { };
+  constructor(
+    private $q: angular.IQService,
+    private $rootScope: angular.IRootScopeService
+  ) { }
 
   signUp(email: string, password: string, firstname: string, lastname: string): angular.IPromise<IAccount> {
-    var defer = this.$q.defer<IAccount>();
+    const defer = this.$q.defer<IAccount>();
     Parse.User.signUp(email, password, {
       email: email,
       firstname: firstname,
       lastname: lastname
     }).then((user: Parse.User) => {
-      defer.resolve(userMapper(user));
+      const account = userMapper(user);
+      this.$rootScope.$emit('EVENT_SIGNUP', account);
+      defer.resolve(account);
     }, (error) => {
       defer.reject(error);
     });
@@ -28,19 +26,22 @@ export class AccountService {
   }
 
   logIn(email: string, password: string): angular.IPromise<IAccount> {
-    var defer = this.$q.defer<IAccount>();
+    const defer = this.$q.defer<IAccount>();
     Parse.User.logIn(email, password)
       .then((user: Parse.User) => {
-        defer.resolve(userMapper(user));
+        const account = userMapper(user);
+        this.$rootScope.$emit('EVENT_LOGIN', account);
+        defer.resolve(account);
       }, (error) => {
         defer.reject(error);
       });
     return defer.promise;
   }
 
-  logOut(): any {
-    var defer = this.$q.defer();
+  logOut(): angular.IPromise<any> {
+    const defer = this.$q.defer();
     Parse.User.logOut().then(() => {
+      this.$rootScope.$emit('EVENT_LOGOUT');
       defer.resolve();
     }, (error) => {
       defer.reject(error);

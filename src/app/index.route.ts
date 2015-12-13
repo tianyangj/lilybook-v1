@@ -4,7 +4,9 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
     .state('app', {
       abstract: true,
       url: '',
-      templateUrl: 'app/layouts/row.html'
+      templateUrl: 'app/layouts/row.html',
+      controller: 'AppController',
+      controllerAs: 'appCtrl'
     })
     .state('app.splash', {
       url: '/',

@@ -1,4 +1,5 @@
 import { AccountService } from '../services/account.service';
+import { IAccount } from '../services/account.model';
 
 export class LoginController {
 
@@ -13,7 +14,7 @@ export class LoginController {
 	) { }
 
 	logIn() {
-		this.accountService.logIn(this.email, this.password).then((account) => {
+		this.accountService.logIn(this.email, this.password).then((account: IAccount) => {
 			this.toastr.success('Redirecting to Home...', 'Login Success', {
 				closeButton: false,
 				timeOut: 1000,

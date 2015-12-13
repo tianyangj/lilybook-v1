@@ -1,4 +1,4 @@
-import { IAccount } from './account.service';
+import { IAccount } from './account.model';
 
 export function userMapper(user: Parse.User): IAccount {
 	return user ? {
