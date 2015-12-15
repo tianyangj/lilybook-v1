@@ -1,1 +1,64 @@
-<h1>Discover</h1>
+<div flex class="md-padding">
+	<section>
+		<h2 class="md-display-1" style="margin:16px 0;">Featured Composers</h2>
+		<div layout-sm="column" layout-gt-sm="row">
+			<div flex-sm="100" flex-md="50" flex-gt-md="25" ng-repeat="composer in discoverCtrl.composers">
+				<a ui-sref="app.composer({vanity:composer.vanity})">
+					<md-card lb-hover="4">
+						<img ng-src="{{composer.image}}" class="md-card-image">
+						<md-card-content>
+							<h4 class="md-title ellipsis" style="margin-bottom:8px;">{{composer.fullname}}</h4>
+							<p class="md-caption ellipsis-3">{{composer.bio}}</p>
+						</md-card-content>
+					</md-card>
+				</a>
+			</div>
+		</div>
+	</section>
+	<md-divider style="margin:24px 0;"></md-divider>
+	<section>
+		<div layout-sm="column" layout-gt-sm="row">
+			<a flex-sm="100" flex-gt-sm="33" ui-sref="app.browse">
+				<md-card lb-hover="4">
+					<img src="http://placehold.it/400x200" class="md-card-image">
+					<md-card-content class="text-center">
+						<h4 class="md-title ellipsis" style="margin:8px 0;">Charts</h4>
+						<p class="md-body-1 ellipsis">Top 50 compositions by popularity</p>
+					</md-card-content>
+				</md-card>
+			</a>
+			<a flex-sm="100" flex-gt-sm="33" ui-sref="app.browse">
+				<md-card lb-hover="4">
+					<img src="http://placehold.it/400x200" class="md-card-image">
+					<md-card-content class="text-center">
+						<h4 class="md-title ellipsis" style="margin:8px 0;">New Additions</h4>
+						<p class="md-body-1 ellipsis">The latest additions to our existing catalog</p>
+					</md-card-content>
+				</md-card>
+			</a>
+			<a flex-sm="100" flex-gt-sm="33" ui-sref="app.browse">
+				<md-card lb-hover="4">
+					<img src="http://placehold.it/400x200" class="md-card-image">
+					<md-card-content class="text-center">
+						<h4 class="md-title ellipsis" style="margin:8px 0;">Browse</h4>
+						<p class="md-body-1 ellipsis">Browse all of our compositions</p>
+					</md-card-content>
+				</md-card>
+			</a>
+		</div>
+	</section>
+	<md-divider style="margin:24px 0;"></md-divider>
+	<section>
+		<h2 class="md-display-1" style="margin:16px 0;">Forms & Genres</h2>
+		<md-grid-list md-cols-sm="2" md-cols-md="4" md-cols-lg="6" md-cols-gt-lg="8" md-row-height="1:1" md-gutter="8px">
+			<md-grid-tile ng-repeat="form in discoverCtrl.forms">
+				<a ui-sref="app.browse({form:form.name})" style="width:100%;height:100%;">
+					<img src="http://placehold.it/200x200" style="width:100%;height:100%;" />
+					<md-grid-tile-footer>
+						<h4 class="md-subhead ellipsis">{{form.name}}</h4>
+					</md-grid-tile-footer>
+				</a>
+			</md-grid-tile>
+		</md-grid-list>
+	</section>
+</div>

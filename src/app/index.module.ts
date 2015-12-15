@@ -11,6 +11,7 @@ import { DiscoverController } from './pages/discover/discover.controller';
 import { GithubContributor } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { AccountService } from '../app/services/account.service';
+import { DefinitionService } from '../app/services/definition.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
 import { lbHeader } from '../app/components/lbHeader/lbHeader.directive';
@@ -31,6 +32,7 @@ module lilybook {
     .service('githubContributor', GithubContributor)
     .service('webDevTec', WebDevTecService)
     .service('accountService', AccountService)
+    .service('definitionService', DefinitionService)
     .controller('AppController', AppController)
     .controller('MainController', MainController)
     .controller('LoginController', LoginController)
