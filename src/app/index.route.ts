@@ -27,6 +27,12 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
       controllerAs: 'signupCtrl',
       data: { authNot: true }
     })
+    .state('app.discover', {
+      url: '/discover',
+      templateUrl: 'app/pages/discover/discover.html',
+      controller: 'DiscoverController',
+      controllerAs: 'discoverCtrl'
+    })
     .state('app.account', {
       url: '/account',
       templateUrl: 'app/account/account.html',
