@@ -7,6 +7,7 @@ import { AppController } from './index.controller';
 import { MainController } from './main/main.controller';
 import { LoginController } from './login/login.controller';
 import { SignupController } from './signup/signup.controller';
+import { BrowseController } from './pages/browse/browse.controller';
 import { DiscoverController } from './pages/discover/discover.controller';
 import { GithubContributor } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
@@ -16,6 +17,7 @@ import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
 import { lbHeader } from '../app/components/lbHeader/lbHeader.directive';
 import { lbSidenav } from '../app/components/lbSidenav/lbSidenav.directive';
+import { lbSelectComposer } from '../app/components/lbSelectComposer/lbSelectComposer.directive';
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -37,9 +39,11 @@ module lilybook {
     .controller('MainController', MainController)
     .controller('LoginController', LoginController)
     .controller('SignupController', SignupController)
+    .controller('BrowseController', BrowseController)
     .controller('DiscoverController', DiscoverController)
     .directive('acmeNavbar', acmeNavbar)
     .directive('acmeMalarkey', acmeMalarkey)
     .directive('lbHeader', lbHeader)
-    .directive('lbSidenav', lbSidenav);
+    .directive('lbSidenav', lbSidenav)
+    .directive('lbSelectComposer', lbSelectComposer);
 }
