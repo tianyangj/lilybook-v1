@@ -36,8 +36,8 @@ class SelectComposerController {
 	composerGroups;
 
 	constructor(
-		private $rootScope,
-		private $location,
+		private $rootScope: angular.IRootScopeService,
+		private $location: angular.ILocationService,
 		private definitionService: DefinitionService
 	) {
 		const name = this.$location.search().composer;

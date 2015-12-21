@@ -17,6 +17,7 @@ import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
 import { lbHeader } from '../app/components/lbHeader/lbHeader.directive';
 import { lbSidenav } from '../app/components/lbSidenav/lbSidenav.directive';
+import { lbSelectForm } from '../app/components/lbSelectForm/lbSelectForm.directive';
 import { lbSelectComposer } from '../app/components/lbSelectComposer/lbSelectComposer.directive';
 
 declare var malarkey: any;
@@ -45,5 +46,6 @@ module lilybook {
     .directive('acmeMalarkey', acmeMalarkey)
     .directive('lbHeader', lbHeader)
     .directive('lbSidenav', lbSidenav)
+    .directive('lbSelectForm', lbSelectForm)
     .directive('lbSelectComposer', lbSelectComposer);
 }
