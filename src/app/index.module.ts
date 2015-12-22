@@ -20,6 +20,7 @@ import { lbSidenav } from '../app/components/lbSidenav/lbSidenav.directive';
 import { lbSelectForm } from '../app/components/lbSelectForm/lbSelectForm.directive';
 import { lbSelectDifficulty } from '../app/components/lbSelectDifficulty/lbSelectDifficulty.directive';
 import { lbSelectComposer } from '../app/components/lbSelectComposer/lbSelectComposer.directive';
+import { lbSelectSort } from '../app/components/lbSelectSort/lbSelectSort.directive';
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -49,5 +50,6 @@ module lilybook {
     .directive('lbSidenav', lbSidenav)
     .directive('lbSelectForm', lbSelectForm)
     .directive('lbSelectDifficulty', lbSelectDifficulty)
+    .directive('lbSelectSort', lbSelectSort)
     .directive('lbSelectComposer', lbSelectComposer);
 }
