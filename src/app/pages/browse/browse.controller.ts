@@ -1,11 +1,21 @@
-import { IComposer } from '../../services/composer.model';
-import { IForm } from '../../services/form.model';
-import { DefinitionService } from '../../services/definition.service';
 
+/** @ngInject */
 export class BrowseController {
-	
-	/** @ngInject */
+
 	constructor(
-		private definitionService: DefinitionService
-	) { }
+		private $rootScope: angular.IRootScopeService
+	) {
+		$rootScope.$on('selectComposerChanged', (event, composer) => {
+			console.log('composer changed', composer)
+		})
+		$rootScope.$on('selectFormChanged', (event, form) => {
+			console.log('form changed', form)
+		})
+		$rootScope.$on('selectDifficultyChanged', (event, difficulty) => {
+			console.log('difficulty changed', difficulty)
+		})
+		$rootScope.$on('selectSortChanged', (event, sort) => {
+			console.log('sort changed', sort)
+		})
+	}
 }

@@ -60,7 +60,6 @@ class SelectComposerController {
 	}
 
 	onChange() {
-		console.log('onChange', this.composer)
 		this.$location.search('composer', this.composer.shortname);
 		this.$rootScope.$broadcast('selectComposerChanged', this.composer);
 	}
