@@ -1,4 +1,5 @@
 import { IComposer } from './composer.model';
+import { IDifficulty } from './difficulty.model';
 import { IForm } from './form.model';
 
 export class DefinitionService {
@@ -6,6 +7,7 @@ export class DefinitionService {
 	private cache: angular.ICacheObject;
 	private composerDB: Parse.Object;
 	private formDB: Parse.Object;
+	private rcmDB: Parse.Object;
 	
 	/** @ngInject */
 	constructor(
@@ -15,6 +17,7 @@ export class DefinitionService {
 		this.cache = $cacheFactory('definition');
 		this.composerDB = Parse.Object.extend('Composer');
 		this.formDB = Parse.Object.extend('CompositionType');
+		this.rcmDB = Parse.Object.extend('RCM');
 	}
 
 	getComposer(vanity: string): angular.IPromise<IComposer> {
@@ -81,6 +84,32 @@ export class DefinitionService {
 			});
 			this.cache.put<IForm[]>('forms', forms);
 			defer.resolve(angular.copy(forms));
+		}, (error) => {
+			defer.reject(error);
+		});
+		return defer.promise;
+	}
+
+	getDifficulties(): angular.IPromise<IDifficulty[]> {
+		const difficulties = this.cache.get<IDifficulty[]>('difficulties');
+		if (difficulties) {
+			return this.$q.when(angular.copy(difficulties));
+		}
+		const defer = this.$q.defer<IDifficulty[]>();
+		const query = new Parse.Query(this.rcmDB);
+		query.ascending('order');
+		query.find().then((response: Parse.Object[]) => {
+			const difficulties = response.map((difficulty): IDifficulty => {
+				return {
+					base: difficulty,
+					id: difficulty.id,
+					name: difficulty.get('name'),
+					value: difficulty.get('value'),
+					certificate: difficulty.get('certificate')
+				};
+			});
+			this.cache.put<IDifficulty[]>('difficulties', difficulties);
+			defer.resolve(angular.copy(difficulties));
 		}, (error) => {
 			defer.reject(error);
 		});
