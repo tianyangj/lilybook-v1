@@ -40,9 +40,9 @@ class SelectDifficultyController {
 	) {
 		const name = this.$location.search().level;
 		if (name) {
-			definitionService.getDifficulties().then((difficulties) => {
+			definitionService.getDifficulties().then((difficulties: IDifficulty[]) => {
 				this.difficulties = difficulties;
-				this.difficulty = difficulties.find((difficulty) => {
+				this.difficulty = difficulties.find((difficulty: IDifficulty) => {
 					return difficulty.value.toUpperCase() === name.toUpperCase();
 				});
 			});
@@ -51,7 +51,7 @@ class SelectDifficultyController {
 
 	onOpen() {
 		if (!this.difficulties) {
-			return this.definitionService.getDifficulties().then((difficulties) => {
+			return this.definitionService.getDifficulties().then((difficulties: IDifficulty[]) => {
 				this.difficulties = difficulties;
 			});
 		}

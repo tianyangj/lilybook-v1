@@ -17,8 +17,8 @@ export function lbHeader(): angular.IDirective {
 class HeaderController {
 
   constructor(
-    private $state,
-    private $mdSidenav,
+    private $state: angular.ui.IStateService,
+    private $mdSidenav: angular.material.ISidenavService,
     private accountService: AccountService
   ) { }
 

@@ -40,9 +40,9 @@ class SelectFormController {
 	) {
 		const name = this.$location.search().form;
 		if (name) {
-			definitionService.getForms().then((forms) => {
+			definitionService.getForms().then((forms: IForm[]) => {
 				this.forms = forms;
-				this.form = forms.find((form) => {
+				this.form = forms.find((form: IForm) => {
 					return form.name.toUpperCase() === name.toUpperCase();
 				});
 			});
@@ -51,7 +51,7 @@ class SelectFormController {
 
 	onOpen() {
 		if (!this.forms) {
-			return this.definitionService.getForms().then((forms) => {
+			return this.definitionService.getForms().then((forms: IForm[]) => {
 				this.forms = forms;
 			});
 		}

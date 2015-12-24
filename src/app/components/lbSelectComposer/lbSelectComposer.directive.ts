@@ -29,11 +29,15 @@ export function lbSelectComposer(): angular.IDirective {
 
 }
 
+interface IComposerGroups {
+	string: IComposer[];
+}
+
 /** @ngInject */
 class SelectComposerController {
 
-	composer;
-	composerGroups;
+	composer: IComposer;
+	composerGroups: IComposerGroups;
 
 	constructor(
 		private $rootScope: angular.IRootScopeService,
@@ -42,9 +46,9 @@ class SelectComposerController {
 	) {
 		const name = this.$location.search().composer;
 		if (name) {
-			this.getComposerGroups().then((composerGroups) => {
+			this.getComposerGroups().then((composerGroups: IComposerGroups) => {
 				this.composerGroups = composerGroups;
-				this.composer = composerGroups[name[0].toUpperCase()].find((composer) => {
+				this.composer = composerGroups[name[0].toUpperCase()].find((composer: IComposer) => {
 					return composer.shortname.toUpperCase() === name.toUpperCase();
 				});
 			});
@@ -53,7 +57,7 @@ class SelectComposerController {
 
 	onOpen() {
 		if (!this.composerGroups) {
-			return this.getComposerGroups().then((composerGroups) => {
+			return this.getComposerGroups().then((composerGroups: IComposerGroups) => {
 				this.composerGroups = composerGroups;
 			});
 		}
@@ -64,9 +68,9 @@ class SelectComposerController {
 		this.$rootScope.$broadcast('selectComposerChanged', this.composer);
 	}
 
-	private getComposerGroups() {
-		return this.definitionService.getComposers().then((composers) => {
-			return composers.reduce((previous, current) => {
+	private getComposerGroups(): angular.IPromise<IComposerGroups> {
+		return this.definitionService.getComposers().then((composers: IComposer[]) => {
+			return composers.reduce((previous: IComposer, current: IComposer) => {
 				const key = current.shortname[0].toUpperCase();
 				if (previous[key]) {
 					previous[key].push(current);
