@@ -1,6 +1,7 @@
 import { IComposer } from './composer.model';
 import { IDifficulty } from './difficulty.model';
 import { IForm } from './form.model';
+import { composerMapper, rcmMapper, formMapper } from './mapper';
 
 export class DefinitionService {
 
@@ -45,17 +46,7 @@ export class DefinitionService {
 		const query = new Parse.Query(this.composerDB);
 		query.ascending('shortName');
 		query.find().then((response: Parse.Object[]) => {
-			const composers = response.map((composer): IComposer => {
-				return {
-					base: composer,
-					id: composer.id,
-					fullname: composer.get('fullName'),
-					shortname: composer.get('shortName'),
-					bio: composer.get('description'),
-					vanity: composer.get('vanity'),
-					image: composer.get('image') ? composer.get('image').url() : null
-				};
-			});
+			const composers = response.map(composerMapper);
 			this.cache.put<IComposer[]>('composers', composers);
 			defer.resolve(angular.copy(composers));
 		}, (error) => {
@@ -73,15 +64,7 @@ export class DefinitionService {
 		const query = new Parse.Query(this.formDB);
 		query.ascending('order');
 		query.find().then((response: Parse.Object[]) => {
-			const forms = response.map((form): IForm => {
-				return {
-					base: form,
-					id: form.id,
-					name: form.get('name'),
-					description: form.get('description'),
-					wiki: form.get('wiki')
-				};
-			});
+			const forms = response.map(formMapper);
 			this.cache.put<IForm[]>('forms', forms);
 			defer.resolve(angular.copy(forms));
 		}, (error) => {
@@ -99,15 +82,7 @@ export class DefinitionService {
 		const query = new Parse.Query(this.rcmDB);
 		query.ascending('order');
 		query.find().then((response: Parse.Object[]) => {
-			const difficulties = response.map((difficulty): IDifficulty => {
-				return {
-					base: difficulty,
-					id: difficulty.id,
-					name: difficulty.get('name'),
-					value: difficulty.get('value'),
-					certificate: difficulty.get('certificate')
-				};
-			});
+			const difficulties = response.map(rcmMapper);
 			this.cache.put<IDifficulty[]>('difficulties', difficulties);
 			defer.resolve(angular.copy(difficulties));
 		}, (error) => {
