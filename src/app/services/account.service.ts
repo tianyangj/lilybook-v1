@@ -19,7 +19,7 @@ export class AccountService {
       const account = userMapper(user);
       this.$rootScope.$emit('EVENT_SIGNUP', account);
       defer.resolve(account);
-    }, (error) => {
+    }, (error: Parse.Error) => {
       defer.reject(error);
     });
     return defer.promise;
@@ -32,7 +32,7 @@ export class AccountService {
         const account = userMapper(user);
         this.$rootScope.$emit('EVENT_LOGIN', account);
         defer.resolve(account);
-      }, (error) => {
+      }, (error: Parse.Error) => {
         defer.reject(error);
       });
     return defer.promise;
@@ -43,7 +43,7 @@ export class AccountService {
     Parse.User.logOut().then(() => {
       this.$rootScope.$emit('EVENT_LOGOUT');
       defer.resolve();
-    }, (error) => {
+    }, (error: Parse.Error) => {
       defer.reject(error);
     });
     return defer.promise;

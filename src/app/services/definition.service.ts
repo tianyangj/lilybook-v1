@@ -9,7 +9,7 @@ export class DefinitionService {
 	private composerDB: Parse.Object;
 	private formDB: Parse.Object;
 	private rcmDB: Parse.Object;
-	
+
 	/** @ngInject */
 	constructor(
 		private $q: angular.IQService,
@@ -22,16 +22,16 @@ export class DefinitionService {
 	}
 
 	getComposer(vanity: string): angular.IPromise<IComposer> {
-		return this.getComposers().then((composers) => {
-			return composers.find((composer) => {
+		return this.getComposers().then((composers: IComposer[]) => {
+			return composers.find((composer: IComposer) => {
 				return composer.vanity === vanity;
 			});
 		});
 	}
 
 	getFeaturedComposers(): angular.IPromise<IComposer[]> {
-		return this.getComposers().then((composers) => {
-			return composers.filter((composer) => {
+		return this.getComposers().then((composers: IComposer[]) => {
+			return composers.filter((composer: IComposer) => {
 				return !!composer.image;
 			});
 		});
@@ -49,7 +49,7 @@ export class DefinitionService {
 			const composers = response.map(composerMapper);
 			this.cache.put<IComposer[]>('composers', composers);
 			defer.resolve(angular.copy(composers));
-		}, (error) => {
+		}, (error: Parse.Error) => {
 			defer.reject(error);
 		});
 		return defer.promise;
@@ -67,7 +67,7 @@ export class DefinitionService {
 			const forms = response.map(formMapper);
 			this.cache.put<IForm[]>('forms', forms);
 			defer.resolve(angular.copy(forms));
-		}, (error) => {
+		}, (error: Parse.Error) => {
 			defer.reject(error);
 		});
 		return defer.promise;
@@ -85,7 +85,7 @@ export class DefinitionService {
 			const difficulties = response.map(rcmMapper);
 			this.cache.put<IDifficulty[]>('difficulties', difficulties);
 			defer.resolve(angular.copy(difficulties));
-		}, (error) => {
+		}, (error: Parse.Error) => {
 			defer.reject(error);
 		});
 		return defer.promise;
