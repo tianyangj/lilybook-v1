@@ -4,7 +4,7 @@ import { AccountService } from './services/account.service';
 export class AppController {
 
 	account: IAccount;
-	
+
 	/** @ngInject */
 	constructor(
 		private $rootScope: angular.IRootScopeService,
@@ -12,11 +12,11 @@ export class AppController {
 	) {
 		this.account = this.accountService.current();
 
-		this.$rootScope.$on('EVENT_LOGIN', (event, account: IAccount) => {
+		this.$rootScope.$on('EVENT_LOGIN', (event: angular.IAngularEvent, account: IAccount) => {
 			this.account = account;
 		});
 
-		this.$rootScope.$on('EVENT_SIGNUP', (event, account: IAccount) => {
+		this.$rootScope.$on('EVENT_SIGNUP', (event: angular.IAngularEvent, account: IAccount) => {
 			this.account = account;
 		});
 

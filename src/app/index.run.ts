@@ -9,7 +9,7 @@ export function runBlock(
 
   Parse.initialize('fHO4LtJRfsdhQBBicYZpdpj3BQHHQCVEiDPkS4ZI', '3gzRyAZnxtQLn1IofC4Layn6cc487e4n5Jin6FzM');
 
-  $rootScope.$on('$stateChangeStart', (event, next: angular.ui.IState) => {
+  $rootScope.$on('$stateChangeStart', (event: angular.IAngularEvent, next: angular.ui.IState) => {
     const account = accountService.current();
     if (next.data && next.data.authRequired && !account) {
       event.preventDefault();
