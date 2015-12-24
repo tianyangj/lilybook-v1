@@ -12,7 +12,7 @@
       "commit": "bb051830df88f5a55dcf06b7fe85bf6b62cc97f2"
     },
     "jquery/jquery.d.ts": {
-      "commit": "bb051830df88f5a55dcf06b7fe85bf6b62cc97f2"
+      "commit": "1da639a106527e0c4010b354a1efe52a3059a291"
     },
     "angular-ui-router/angular-ui-router.d.ts": {
       "commit": "bb051830df88f5a55dcf06b7fe85bf6b62cc97f2"
@@ -39,7 +39,13 @@
       "commit": "bb051830df88f5a55dcf06b7fe85bf6b62cc97f2"
     },
     "parse/parse.d.ts": {
-      "commit": "e5a27ea95e47b95333784f1f0d590127b4e39a89"
+      "commit": "1da639a106527e0c4010b354a1efe52a3059a291"
+    },
+    "node/node.d.ts": {
+      "commit": "1da639a106527e0c4010b354a1efe52a3059a291"
+    },
+    "underscore/underscore.d.ts": {
+      "commit": "1da639a106527e0c4010b354a1efe52a3059a291"
     }
   }
 }
