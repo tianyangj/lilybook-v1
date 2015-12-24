@@ -6,15 +6,15 @@ export class DiscoverController {
 
 	composers: IComposer[];
 	forms: IForm[];
-	
+
 	/** @ngInject */
 	constructor(
 		private definitionService: DefinitionService
 	) {
-		definitionService.getForms().then((forms) => {
+		definitionService.getForms().then((forms: IForm[]) => {
 			this.forms = forms;
 		});
-		definitionService.getFeaturedComposers().then((composers) => {
+		definitionService.getFeaturedComposers().then((composers: IComposer[]) => {
 			this.composers = composers.slice(0, 4);
 		});
 	}
