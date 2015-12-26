@@ -3,9 +3,9 @@ import { IComposer } from '../../services/composer.model';
 
 export function lbSelectComposer(): angular.IDirective {
 
-	return {
-		restrict: 'E',
-		template: `
+    return {
+        restrict: 'E',
+        template: `
 			<md-input-container>
         		<label>Composers</label>
         		<md-select
@@ -21,64 +21,64 @@ export function lbSelectComposer(): angular.IDirective {
         		</md-select>
       		</md-input-container>
 		`,
-		scope: {},
-		controller: SelectComposerController,
-		controllerAs: 'ctrl',
-		bindToController: true
-	};
+        scope: {},
+        controller: SelectComposerController,
+        controllerAs: 'ctrl',
+        bindToController: true
+    };
 
 }
 
 interface IComposerGroups {
-	string: IComposer[];
+    string: IComposer[];
 }
 
 /** @ngInject */
 class SelectComposerController {
 
-	composer: IComposer;
-	composerGroups: IComposerGroups;
+    composer: IComposer;
+    composerGroups: IComposerGroups;
 
-	constructor(
-		private $rootScope: angular.IRootScopeService,
-		private $location: angular.ILocationService,
-		private definitionService: DefinitionService
-	) {
-		const name = this.$location.search().composer;
-		if (name) {
-			this.getComposerGroups().then((composerGroups: IComposerGroups) => {
-				this.composerGroups = composerGroups;
-				this.composer = composerGroups[name[0].toUpperCase()].find((composer: IComposer) => {
-					return composer.shortname.toUpperCase() === name.toUpperCase();
-				});
-			});
-		}
-	}
+    constructor(
+        private $rootScope: angular.IRootScopeService,
+        private $location: angular.ILocationService,
+        private definitionService: DefinitionService
+    ) {
+        const name = this.$location.search().composer;
+        if (name) {
+            this.getComposerGroups().then((composerGroups: IComposerGroups) => {
+                this.composerGroups = composerGroups;
+                this.composer = _.chain(composerGroups[name[0].toUpperCase()]).find((composer: IComposer) => {
+                    return composer.shortname.toUpperCase() === name.toUpperCase();
+                }).value();
+            });
+        }
+    }
 
-	onOpen() {
-		if (!this.composerGroups) {
-			return this.getComposerGroups().then((composerGroups: IComposerGroups) => {
-				this.composerGroups = composerGroups;
-			});
-		}
-	}
+    onOpen() {
+        if (!this.composerGroups) {
+            return this.getComposerGroups().then((composerGroups: IComposerGroups) => {
+                this.composerGroups = composerGroups;
+            });
+        }
+    }
 
-	onChange() {
-		this.$location.search('composer', this.composer.shortname);
-		this.$rootScope.$broadcast('selectComposerChanged', this.composer);
-	}
+    onChange() {
+        this.$location.search('composer', this.composer.shortname);
+        this.$rootScope.$broadcast('selectComposerChanged', this.composer);
+    }
 
-	private getComposerGroups(): angular.IPromise<IComposerGroups> {
-		return this.definitionService.getComposers().then((composers: IComposer[]) => {
-			return composers.reduce((previous: IComposer, current: IComposer) => {
-				const key = current.shortname[0].toUpperCase();
-				if (previous[key]) {
-					previous[key].push(current);
-				} else {
-					previous[key] = [current];
-				}
-				return previous;
-			}, {});
-		});
-	}
+    private getComposerGroups(): angular.IPromise<IComposerGroups> {
+        return this.definitionService.getComposers().then((composers: IComposer[]) => {
+            return composers.reduce((previous: IComposer, current: IComposer) => {
+                const key = current.shortname[0].toUpperCase();
+                if (previous[key]) {
+                    previous[key].push(current);
+                } else {
+                    previous[key] = [current];
+                }
+                return previous;
+            }, {});
+        });
+    }
 }

@@ -42,9 +42,9 @@ class SelectDifficultyController {
 		if (name) {
 			definitionService.getDifficulties().then((difficulties: IDifficulty[]) => {
 				this.difficulties = difficulties;
-				this.difficulty = difficulties.find((difficulty: IDifficulty) => {
+				this.difficulty = _.chain(difficulties).find((difficulty: IDifficulty) => {
 					return difficulty.value.toUpperCase() === name.toUpperCase();
-				});
+				}).value();
 			});
 		}
 	}

@@ -3,9 +3,9 @@ import { IForm } from '../../services/form.model';
 
 export function lbSelectForm(): angular.IDirective {
 
-	return {
-		restrict: 'E',
-		template: `
+    return {
+        restrict: 'E',
+        template: `
 			<md-input-container>
         		<label>Forms & Genres</label>
         		<md-select
@@ -19,46 +19,46 @@ export function lbSelectForm(): angular.IDirective {
         		</md-select>
       		</md-input-container>
 		`,
-		scope: {},
-		controller: SelectFormController,
-		controllerAs: 'ctrl',
-		bindToController: true
-	};
+        scope: {},
+        controller: SelectFormController,
+        controllerAs: 'ctrl',
+        bindToController: true
+    };
 
 }
 
 /** @ngInject */
 class SelectFormController {
 
-	form: IForm;
-	forms: IForm[];
+    form: IForm;
+    forms: IForm[];
 
-	constructor(
-		private $rootScope: angular.IRootScopeService,
-		private $location: angular.ILocationService,
-		private definitionService: DefinitionService
-	) {
-		const name = this.$location.search().form;
-		if (name) {
-			definitionService.getForms().then((forms: IForm[]) => {
-				this.forms = forms;
-				this.form = forms.find((form: IForm) => {
-					return form.name.toUpperCase() === name.toUpperCase();
-				});
-			});
-		}
-	}
+    constructor(
+        private $rootScope: angular.IRootScopeService,
+        private $location: angular.ILocationService,
+        private definitionService: DefinitionService
+    ) {
+        const name = this.$location.search().form;
+        if (name) {
+            definitionService.getForms().then((forms: IForm[]) => {
+                this.forms = forms;
+                this.form = _.chain(forms).find((form: IForm) => {
+                    return form.name.toUpperCase() === name.toUpperCase();
+                }).value();
+            });
+        }
+    }
 
-	onOpen() {
-		if (!this.forms) {
-			return this.definitionService.getForms().then((forms: IForm[]) => {
-				this.forms = forms;
-			});
-		}
-	}
+    onOpen() {
+        if (!this.forms) {
+            return this.definitionService.getForms().then((forms: IForm[]) => {
+                this.forms = forms;
+            });
+        }
+    }
 
-	onChange() {
-		this.$location.search('form', this.form.name);
-		this.$rootScope.$broadcast('selectFormChanged', this.form);
-	}
+    onChange() {
+        this.$location.search('form', this.form.name);
+        this.$rootScope.$broadcast('selectFormChanged', this.form);
+    }
 }
