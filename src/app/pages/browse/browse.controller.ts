@@ -8,29 +8,34 @@ import { ICompositionQuery, CompositionService } from '../../services/compositio
 export class BrowseController {
 
     compositions: IComposition[];
+    query: ICompositionQuery = {};
 
     constructor(
         private $rootScope: angular.IRootScopeService,
         private compositionService: CompositionService
     ) {
         $rootScope.$on('selectComposerChanged', (event: angular.IAngularEvent, composer: IComposer) => {
-            console.log('composer changed', composer);
+            _.extend(this.query, { composerId: composer.id });
+            this.updateCompositions();
         });
         $rootScope.$on('selectFormChanged', (event: angular.IAngularEvent, form: IForm) => {
-            console.log('form changed', form);
+            _.extend(this.query, { formId: form.id });
+            this.updateCompositions();
         });
         $rootScope.$on('selectDifficultyChanged', (event: angular.IAngularEvent, difficulty: IDifficulty) => {
-            console.log('difficulty changed', difficulty);
+            _.extend(this.query, { difficultyId: difficulty.id });
+            this.updateCompositions();
         });
         $rootScope.$on('selectSortChanged', (event: angular.IAngularEvent, sort: any) => {
-            console.log('sort changed', sort);
-            this.getCompositions({ sortId: sort.value });
+            _.extend(this.query, { sortId: sort.value });
+            this.updateCompositions();
         });
     }
 
-    private getCompositions(query: ICompositionQuery) {
-        return this.compositionService.getCompositions(query).then((compositions: IComposition[]) => {
-            console.log('compositions', compositions);
+    private updateCompositions = _.debounce(() => {
+        //console.log('query', this.query);
+        this.compositionService.getCompositions(this.query).then((compositions: IComposition[]) => {
+            this.compositions = compositions;
         });
-    }
+    }, 600);
 }

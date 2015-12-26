@@ -1,7 +1,6 @@
 {
   "rules": {
     "ban": [true,
-      ["_", "extend"],
       ["_", "isNull"],
       ["_", "isDefined"]
     ],
