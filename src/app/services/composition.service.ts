@@ -1,6 +1,6 @@
 import { IComposition } from './composition.model';
 import { IComposer } from './composer.model';
-import { compositionMapper } from './mapper';
+import { composerMapper, compositionMapper } from './mapper';
 
 export interface ICompositionQuery {
     composer?: IComposer;
@@ -12,13 +12,31 @@ export interface ICompositionQuery {
 
 export class CompositionService {
 
+    private composerDB: Parse.Object;
     private compositionDB: Parse.Object;
 
     /** @ngInject */
     constructor(
         private $q: angular.IQService
     ) {
+        this.composerDB = Parse.Object.extend('Composer');
         this.compositionDB = Parse.Object.extend('Composition');
+    }
+
+    getComposer(vanity: string): angular.IPromise<IComposer> {
+        const defer = this.$q.defer<IComposer>();
+        const query = new Parse.Query(this.composerDB);
+        query.equalTo('vanity', vanity);
+        query.first().then((response: Parse.Object) => {
+            if (response) {
+                defer.resolve(composerMapper(response));
+            } else {
+                defer.reject('NOT_FOUND');
+            }
+        }, (error: Parse.Error) => {
+            defer.reject(error);
+        });
+        return defer.promise;
     }
 
     getComposition(compositionId: string): angular.IPromise<IComposition> {
