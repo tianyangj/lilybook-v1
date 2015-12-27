@@ -28,7 +28,7 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
       data: { authNot: true }
     })
     .state('app.browse', {
-      url: '/browse',
+      url: '/browse?form',
       templateUrl: 'app/pages/browse/browse.html',
       controller: 'BrowseController',
       controllerAs: 'browseCtrl'
@@ -38,6 +38,18 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
       templateUrl: 'app/pages/discover/discover.html',
       controller: 'DiscoverController',
       controllerAs: 'discoverCtrl'
+    })
+    .state('app.composer', {
+      url: '/composer/:vanity',
+      templateUrl: 'app/pages/composer/composer.html',
+      controller: 'ComposerController',
+      controllerAs: 'composerCtrl'
+    })
+    .state('app.composition', {
+      url: '/composition/:id',
+      templateUrl: 'app/pages/composition/composition.html',
+      controller: 'CompositionController',
+      controllerAs: 'compositionCtrl'
     })
     .state('app.account', {
       url: '/account',
