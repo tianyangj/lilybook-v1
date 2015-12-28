@@ -1,18 +1,18 @@
-<div layout="row" layout-align="center center" layout-padding flex class="login-container">
-	<form flex-gt-md="33" flex-md="50" flex name="loginForm" class="md-whiteframe-z1">
-		<md-input-container>
-			<label>Email</label>
-			<input type="email" name="email" ng-model="loginCtrl.email" required>
-		</md-input-container>
-		<md-input-container>
-			<label>Password</label>
-			<input type="password" name="password" ng-model="loginCtrl.password" required>
-		</md-input-container>
-		<div layout="row">
-			<md-button flex class="md-raised md-primary" ng-click="loginCtrl.logIn()">Login</md-button>
-		</div>
-		<div layout="row" layout-align="center center" layout-padding>
-			<a ui-sref="app.splash">Forgot password?</a>
-		</div>
-	</form>
+<div flex layout="row" layout-align="center center">
+    <form layout="column" name="loginForm" class="md-whiteframe-z1 md-padding" style="width:320px;">
+        <md-input-container>
+            <label>Email</label>
+            <input type="email" name="email" ng-model="loginCtrl.email" required>
+        </md-input-container>
+        <md-input-container>
+            <label>Password</label>
+            <input type="password" name="password" ng-model="loginCtrl.password" required>
+        </md-input-container>
+        <div layout="row" layout-align="center center">
+            <md-button class="md-raised md-primary" ng-click="loginCtrl.logIn()">Login</md-button>
+        </div>
+        <div layout="row" layout-align="center center" layout-padding>
+            <a ui-sref="app.splash">Forgot password?</a>
+        </div>
+    </form>
 </div>
