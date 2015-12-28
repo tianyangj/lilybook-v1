@@ -2,7 +2,7 @@ import { AccountService } from './services/account.service';
 
 /** @ngInject */
 export function runBlock(
-  $rootScope: angular.IRootScopeService,
+  $rootScope: any,
   $state: angular.ui.IStateService,
   accountService: AccountService
 ) {
@@ -20,4 +20,6 @@ export function runBlock(
       $state.go('app.home');
     }
   });
+
+  $rootScope.$state = $state;
 }

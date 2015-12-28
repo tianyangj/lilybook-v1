@@ -1,5 +1,38 @@
-<div flex>
-    {{composerCtrl.composer}}
-    <hr>
-    {{composerCtrl.compositions}}
+<div flex class="md-padding">
+    <div class="md-whiteframe-z1 md-padding" layout="row" layout-align="center center" style="height:300px;">
+        <img class="md-padding" ng-src="{{composerCtrl.composer.image}}" style="width:270px;border-radius:50%;" />
+        <div flex class="md-padding">
+            <h1 class="md-display-1">{{composerCtrl.composer.fullname}}</h1>
+            <p class="md-body-1 ellipsis-5">{{composerCtrl.composer.bio}}</p>
+            <div>
+                <md-button class="md-raised md-primary">Follow</md-button>
+            </div>
+        </div>
+    </div>
+    <div class="md-whiteframe-z1" style="margin:24px 0;">
+        <div layout="row" layout-align="center center" style="padding:12px 24px;">
+            <h3 class="md-headline">All Compositions</h3>
+            <span flex></span>
+            <lb-select-form></lb-select-form>
+            <lb-select-sort style="margin-left:24px;"></lb-select-sort>
+        </div>
+        <div class="md-padding" ng-if="composerCtrl.loading">
+            <md-progress-circular class="md-primary" md-mode="indeterminate" md-diameter="80" style="margin:0 auto;">
+            </md-progress-circular>
+        </div>
+        <div ng-if="!composerCtrl.loading">
+            <md-list flex ng-if="composerCtrl.compositions.length">
+                <md-list-item class="md-2-line" ng-repeat="composition in composerCtrl.compositions" ng-click="$state.go('app.composition',{id:composition.id})">
+                    <span class="md-avatar" style="text-align:center;font-family:cursive;font-size:40px;">{{$index+1}}</span>
+                    <div class="md-list-item-text">
+                        <h4 class="md-title" style="font-size:18px">{{composition.title}}</h4>
+                        <p>{{composition.form.name}}, {{composition.rcm.name}}</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+            <p class="md-padding" ng-if="!composerCtrl.compositions.length">
+                No compositions found.
+            </p>
+        </div>
+    </div>
 </div>
