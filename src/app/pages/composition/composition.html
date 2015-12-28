@@ -1,1 +1,117 @@
-Composition
+<div flex>
+    <lb-hero-composition video="compositionCtrl.composition.video"></lb-hero-composition>
+    <md-tabs md-center-tabs md-dynamic-height md-border-bottom md-swipe-content>
+        <md-tab label="Details">
+            <div class="md-padding">
+                <div layout="row" layout-align="center center">
+                    <h1 class="md-display-1" flex>{{compositionCtrl.composition.title}}</h1>
+                    <lb-like composition="compositionCtrl.composition"></lb-like>
+                    <lb-todo composition="compositionCtrl.composition"></lb-todo>
+                    <!--<lb-repertoire composition="compositionCtrl.composition"></lb-repertoire>
+					<md-menu md-position-mode="target-right target">
+						<md-button aria-label="More Menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+							<md-icon md-svg-icon="assets/svg/ic_more_vert.svg"></md-icon>
+						</md-button>
+						<md-menu-content width="4">
+							<md-menu-item>
+								<md-button ng-href="{{compositionCtrl.composition.wikipedia}}" target="_blank">More detail on Wikipedia</md-button>
+							</md-menu-item>
+							<md-menu-item>
+								<md-button ng-href="{{compositionCtrl.composition.imslp}}" target="_blank">Sheet music on IMSLP</md-button>
+							</md-menu-item>
+						</md-menu-content>
+					</md-menu>-->
+                </div>
+                <p class="md-body-1 md-padding">
+                    {{compositionCtrl.composition.description}}
+                    <a ng-href="{{compositionCtrl.composition.wikipedia}}" target="_blank">More detail on Wikipedia</a>
+                </p>
+                <div layout="row">
+                    <div flex>
+                        <div class="md-padding" layout="row">
+                            <strong flex="33">Composer</strong>
+                            <div flex>
+                                <a ui-sref="app.composer({vanity:compositionCtrl.composition.composer.vanity})">{{compositionCtrl.composition.composer.fullname}}</a>
+                            </div>
+                        </div>
+                        <div class="md-padding" layout="row">
+                            <strong flex="33">Form</strong>
+                            <div flex>
+                                <a ui-sref="app.browse({form:compositionCtrl.composition.type,composer:compositionCtrl.composition.composer.shortname})">{{compositionCtrl.composition.type}}</a>
+                            </div>
+                        </div>
+                        <div class="md-padding" layout="row">
+                            <strong flex="33">Catalogue</strong>
+                            <div flex>{{compositionCtrl.composition.catalogue}}</div>
+                        </div>
+                        <div class="md-padding" layout="row" ng-if="compositionCtrl.composition.number">
+                            <strong flex="33">Work Number</strong>
+                            <div flex>{{compositionCtrl.composition.number}}</div>
+                        </div>
+                        <div class="md-padding" layout="row">
+                            <strong flex="33">Key</strong>
+                            <div flex>{{compositionCtrl.composition.key}}</div>
+                        </div>
+                        <div class="md-padding" layout="row">
+                            <strong flex="33">RCM</strong>
+                            <div flex>
+                                <a ui-sref="app.browse({level:compositionCtrl.composition.rcm.value,composer:compositionCtrl.composition.composer.shortname})">{{compositionCtrl.composition.rcm.name || 'N/A'}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div flex>
+                        <div class="md-padding" layout="row">
+                            <strong flex="33">Likes</strong>
+                            <div flex>##</div>
+                        </div>
+                        <div class="md-padding" layout="row">
+                            <strong flex="33">Repertoires</strong>
+                            <div flex>##</div>
+                        </div>
+                        <div class="md-padding" layout="row">
+                            <strong flex="33">Videos</strong>
+                            <div flex>##</div>
+                        </div>
+                        <div class="md-padding" layout="row">
+                            <strong flex="33">Q&As</strong>
+                            <div flex>##</div>
+                        </div>
+                        <div class="md-padding" layout="row">
+                            <strong flex="33">Average Difficulty</strong>
+                            <div flex>##</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </md-tab>
+        <md-tab label="Videos">
+            <md-content class="md-padding">
+                <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="3" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px">
+                    <md-grid-tile ng-repeat="video in compositionCtrl.videos" md-rowspan="1" md-colspan="1" md-ink-ripple ng-click="compositionCtrl.openVideo($event, video, compositionCtrl.composition)">
+                        <img class="full-width" ng-src="{{video.thumbnail}}" />
+                        <md-grid-tile-footer>
+                            <h3>{{video.title}}</h3>
+                        </md-grid-tile-footer>
+                    </md-grid-tile>
+                </md-grid-list>
+            </md-content>
+        </md-tab>
+        <md-tab label="Sheets">
+            <div layout="row" layout-align="center center">
+                <md-button class="md-icon-button md-accent button-96" aria-label="Previous" ng-disabled="compositionCtrl.prev" ng-click="compositionCtrl.prevPage()">
+                    <md-icon class="md-96" md-svg-icon="assets/svg/ic_chevron_left.svg"></md-icon>
+                </md-button>
+                <pdf-viewer delegate-handle="pdf-sheet" scale="2" show-toolbar="false"></pdf-viewer>
+                <md-button class="md-icon-button md-accent button-96" aria-label="Next" ng-disabled="compositionCtrl.next" ng-click="compositionCtrl.nextPage()">
+                    <md-icon class="md-96" md-svg-icon="assets/svg/ic_chevron_right.svg"></md-icon>
+                </md-button>
+            </div>
+        </md-tab>
+        <md-tab label="Q & A">
+            <div class="md-padding">
+                <lb-slider-difficulty composition="compositionCtrl.composition"></lb-slider-difficulty>
+                <div>list of questions and answers...</div>
+            </div>
+        </md-tab>
+    </md-tabs>
+</div>
