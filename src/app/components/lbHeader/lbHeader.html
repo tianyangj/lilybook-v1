@@ -19,9 +19,9 @@
 	</md-button>
 	<md-menu-bar ng-if="appCtrl.account">
 		<md-menu>
-			<md-button class="md-icon-button" aria-label="Account Menu" ng-click="$mdOpenMenu($event)">
-				<md-icon md-svg-icon="assets/svg/ic_account_circle.svg"></md-icon>
-			</md-button>
+			<button ng-click="$mdOpenMenu($event)">
+				{{appCtrl.account.firstname}}
+			</button>
 			<md-menu-content class="md-hue-2">
 				<md-menu-item>
 					<md-button ui-sref="app.home">Home</md-button>
