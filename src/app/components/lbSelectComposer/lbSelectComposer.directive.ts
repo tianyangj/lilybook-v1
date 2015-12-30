@@ -6,7 +6,7 @@ export function lbSelectComposer(): angular.IDirective {
     return {
         restrict: 'E',
         template: `
-			<md-input-container>
+			<md-input-container style="min-width:150px">
         		<label>Composers</label>
         		<md-select
 					ng-model="ctrl.composer"

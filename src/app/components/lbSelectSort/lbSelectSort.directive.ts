@@ -2,7 +2,7 @@ export function lbSelectSort(): angular.IDirective {
 	return {
 		restrict: 'E',
 		template: `
-			<md-input-container>
+			<md-input-container style="min-width:150px">
         		<label>Sort By</label>
         		<md-select
 					ng-model="ctrl.sort"

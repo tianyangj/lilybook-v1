@@ -6,7 +6,7 @@ export function lbSelectDifficulty(): angular.IDirective {
 	return {
 		restrict: 'E',
 		template: `
-			<md-input-container>
+			<md-input-container style="min-width:150px">
         		<label>Difficulty & Level</label>
         		<md-select
 					ng-model="ctrl.difficulty"
