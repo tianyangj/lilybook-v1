@@ -24,6 +24,7 @@ import { lbSelectForm } from '../app/components/lbSelectForm/lbSelectForm.direct
 import { lbSelectDifficulty } from '../app/components/lbSelectDifficulty/lbSelectDifficulty.directive';
 import { lbSelectComposer } from '../app/components/lbSelectComposer/lbSelectComposer.directive';
 import { lbSelectSort } from '../app/components/lbSelectSort/lbSelectSort.directive';
+import { lbHeroComposition } from '../app/components/lbHeroComposition/lbHeroComposition';
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -31,7 +32,7 @@ declare var moment: moment.MomentStatic;
 module lilybook {
   'use strict';
 
-  angular.module('lilybook', ['ngAnimate', 'ngSanitize', 'ngAria', 'ui.router', 'ngMaterial', 'toastr'])
+  angular.module('lilybook', ['ngAnimate', 'ngSanitize', 'ngAria', 'ui.router', 'ngMaterial', 'toastr', 'youtube-embed'])
     .constant('malarkey', malarkey)
     .constant('moment', moment)
     .config(config)
@@ -53,6 +54,7 @@ module lilybook {
     .directive('acmeNavbar', acmeNavbar)
     .directive('acmeMalarkey', acmeMalarkey)
     .directive('lbHeader', lbHeader)
+    .directive('lbHeroComposition', lbHeroComposition)
     .directive('lbSidenav', lbSidenav)
     .directive('lbSelectForm', lbSelectForm)
     .directive('lbSelectDifficulty', lbSelectDifficulty)

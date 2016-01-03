@@ -15,7 +15,7 @@
     "animate.css": "^3.4.0",
     "parse": "^1.6.7",
     "underscore": "^1.8.3",
-    "angular-youtube-embed": "~1.0.2"
+    "angular-youtube-mb": "^1.1.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"
