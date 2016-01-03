@@ -37,7 +37,7 @@
                         <div class="md-padding" layout="row">
                             <strong flex="33">Form</strong>
                             <div flex>
-                                <a ui-sref="app.browse({form:compositionCtrl.composition.type,composer:compositionCtrl.composition.composer.shortname})">{{compositionCtrl.composition.type}}</a>
+                                <a ui-sref="app.browse({form:compositionCtrl.composition.form.name})">{{compositionCtrl.composition.form.name}}</a>
                             </div>
                         </div>
                         <div class="md-padding" layout="row">
@@ -55,7 +55,7 @@
                         <div class="md-padding" layout="row">
                             <strong flex="33">RCM</strong>
                             <div flex>
-                                <a ui-sref="app.browse({level:compositionCtrl.composition.rcm.value,composer:compositionCtrl.composition.composer.shortname})">{{compositionCtrl.composition.rcm.name || 'N/A'}}</a>
+                                <a ui-sref="app.browse({level:compositionCtrl.composition.rcm.value})">{{compositionCtrl.composition.rcm.name || 'N/A'}}</a>
                             </div>
                         </div>
                     </div>

@@ -28,7 +28,7 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
       data: { authNot: true }
     })
     .state('app.browse', {
-      url: '/browse?form',
+      url: '/browse?form&level&composer',
       templateUrl: 'app/pages/browse/browse.html',
       controller: 'BrowseController',
       controllerAs: 'browseCtrl'
