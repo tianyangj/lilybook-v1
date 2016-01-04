@@ -51,6 +51,18 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
       controller: 'CompositionController',
       controllerAs: 'compositionCtrl'
     })
+    .state('app.composition.videos', {
+      url: '/videos',
+      template: '<h1>videos</h1>'
+    })
+    .state('app.composition.sheets', {
+      url: '/sheets',
+      template: '<h1>sheets</h1>'
+    })
+    .state('app.composition.qa', {
+      url: '/qa',
+      template: '<h1>qa</h1>'
+    })
     .state('app.account', {
       url: '/account',
       templateUrl: 'app/account/account.html',
