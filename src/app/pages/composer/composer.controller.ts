@@ -19,6 +19,7 @@ export class ComposerController {
         this.compositionService.getComposer($stateParams.vanity).then((composer: IComposer) => {
             this.composer = composer;
             _.extend(this.query, { composerId: composer.id });
+            this.loading = true;
             this.updateCompositions();
         });
         $rootScope.$on('selectFormChanged', (event: angular.IAngularEvent, form: IForm) => {

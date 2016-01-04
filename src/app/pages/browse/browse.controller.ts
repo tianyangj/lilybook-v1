@@ -35,6 +35,8 @@ export class BrowseController {
             this.loading = true;
             this.updateCompositions();
         });
+        this.loading = true;
+        this.updateCompositions();
     }
 
     private updateCompositions = _.debounce(() => {
