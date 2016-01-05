@@ -11,6 +11,7 @@ import { BrowseController } from './pages/browse/browse.controller';
 import { DiscoverController } from './pages/discover/discover.controller';
 import { ComposerController } from './pages/composer/composer.controller';
 import { CompositionController } from './pages/composition/composition.controller';
+import { CompositionSheetController } from './pages/composition/sheet.controller';
 import { GithubContributor } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { AccountService } from '../app/services/account.service';
@@ -51,6 +52,7 @@ module lilybook {
     .controller('DiscoverController', DiscoverController)
     .controller('ComposerController', ComposerController)
     .controller('CompositionController', CompositionController)
+    .controller('CompositionSheetController', CompositionSheetController)
     .directive('acmeNavbar', acmeNavbar)
     .directive('acmeMalarkey', acmeMalarkey)
     .directive('lbHeader', lbHeader)

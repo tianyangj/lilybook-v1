@@ -1,6 +1,7 @@
 import { IComposition } from './composition.model';
 import { IComposer } from './composer.model';
-import { composerMapper, compositionMapper } from './mapper';
+import { ISheet } from './sheet.model';
+import { composerMapper, compositionMapper, sheetMapper } from './mapper';
 
 export interface ICompositionQuery {
     composer?: IComposer;
@@ -14,6 +15,7 @@ export class CompositionService {
 
     private composerDB: Parse.Object;
     private compositionDB: Parse.Object;
+    private sheetDB: Parse.Object;
 
     /** @ngInject */
     constructor(
@@ -21,6 +23,7 @@ export class CompositionService {
     ) {
         this.composerDB = Parse.Object.extend('Composer');
         this.compositionDB = Parse.Object.extend('Composition');
+        this.sheetDB = Parse.Object.extend('Sheet');
     }
 
     getComposer(vanity: string): angular.IPromise<IComposer> {
@@ -59,7 +62,7 @@ export class CompositionService {
         return defer.promise;
     }
 
-    getCompositions(compositionQuery: ICompositionQuery) {
+    getCompositions(compositionQuery: ICompositionQuery): angular.IPromise<IComposition[]> {
         const defer = this.$q.defer<IComposition[]>();
         const query = new Parse.Query(this.compositionDB);
         query.equalTo('published', true);
@@ -104,6 +107,22 @@ export class CompositionService {
                     break;
             }
             defer.resolve(compositions);
+        }, (error: Parse.Error) => {
+            defer.reject(error);
+        });
+        return defer.promise;
+    }
+
+    getSheet(composition: IComposition): angular.IPromise<ISheet> {
+        var defer = this.$q.defer<ISheet>();
+        var query = new Parse.Query(this.sheetDB);
+        query.equalTo('composition', composition.base);
+        query.first().then((response: Parse.Object) => {
+            if (response) {
+                defer.resolve(sheetMapper(response));
+            } else {
+                defer.reject('NOT_FOUND');
+            }
         }, (error: Parse.Error) => {
             defer.reject(error);
         });

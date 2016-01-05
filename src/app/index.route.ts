@@ -49,7 +49,12 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
       url: '/composition/:id',
       templateUrl: 'app/pages/composition/composition.html',
       controller: 'CompositionController',
-      controllerAs: 'compositionCtrl'
+      controllerAs: 'compositionCtrl',
+      resolve: {
+        composition: ['$stateParams', 'compositionService', ($stateParams: any, compositionService: any) => {
+          return compositionService.getComposition($stateParams.id);
+        }]
+      }
     })
     .state('app.composition.videos', {
       url: '/videos',
@@ -57,7 +62,9 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
     })
     .state('app.composition.sheets', {
       url: '/sheets',
-      template: '<h1>sheets</h1>'
+      templateUrl: 'app/pages/composition/sheet.html',
+      controller: 'CompositionSheetController',
+      controllerAs: 'sheetCtrl'
     })
     .state('app.composition.qa', {
       url: '/qa',
