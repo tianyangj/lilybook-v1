@@ -5,7 +5,6 @@ import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { AppController } from './index.controller';
 import { MainController } from './main/main.controller';
-import { LoginController } from './login/login.controller';
 import { SignupController } from './signup/signup.controller';
 import { ComposerController } from './pages/composer/composer.controller';
 import { CompositionController } from './pages/composition/composition.controller';
@@ -26,6 +25,7 @@ import { lbSelectSort } from '../app/components/lbSelectSort/lbSelectSort.direct
 import { lbHeroComposition } from '../app/components/lbHeroComposition/lbHeroComposition';
 import lbBrowsePage from '../app/pages/browse/browse.directive';
 import lbDiscoverPage from '../app/pages/discover/discover.directive';
+import lbLoginPage from '../app/pages/login/login.directive';
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -46,7 +46,6 @@ module lilybook {
     .service('definitionService', DefinitionService)
     .controller('AppController', AppController)
     .controller('MainController', MainController)
-    .controller('LoginController', LoginController)
     .controller('SignupController', SignupController)
     .controller('ComposerController', ComposerController)
     .controller('CompositionController', CompositionController)
@@ -61,5 +60,6 @@ module lilybook {
     .directive('lbSelectSort', lbSelectSort)
     .directive('lbSelectComposer', lbSelectComposer)
     .directive('lbBrowsePage', lbBrowsePage)
-    .directive('lbDiscoverPage', lbDiscoverPage);
+    .directive('lbDiscoverPage', lbDiscoverPage)
+    .directive('lbLoginPage', lbLoginPage);
 }
