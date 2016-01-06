@@ -10,7 +10,7 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
     })
     .state('app.splash', {
       url: '/',
-      templateUrl: 'app/splash/splash.html',
+      template: '<lb-splash-page></lb-splash-page>',
       data: { authNot: true }
     })
     .state('app.login', {

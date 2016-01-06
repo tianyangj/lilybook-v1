@@ -13,7 +13,7 @@ export default function lbSignupPage(): angular.IDirective {
     };
 }
 
-export class SignupPageController {
+class SignupPageController {
 
     email: string;
     password: string;

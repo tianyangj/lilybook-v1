@@ -26,6 +26,7 @@ import lbBrowsePage from '../app/pages/browse/browse.directive';
 import lbDiscoverPage from '../app/pages/discover/discover.directive';
 import lbLoginPage from '../app/pages/login/login.directive';
 import lbSignupPage from '../app/pages/signup/signup.directive';
+import lbSplashPage from '../app/pages/splash/splash.directive';
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -61,5 +62,6 @@ module lilybook {
     .directive('lbBrowsePage', lbBrowsePage)
     .directive('lbDiscoverPage', lbDiscoverPage)
     .directive('lbLoginPage', lbLoginPage)
-    .directive('lbSignupPage', lbSignupPage);
+    .directive('lbSignupPage', lbSignupPage)
+    .directive('lbSplashPage', lbSplashPage);
 }
