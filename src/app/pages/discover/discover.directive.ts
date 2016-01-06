@@ -10,7 +10,8 @@ export default function lbDiscoverPage(): angular.IDirective {
         scope: {},
         controller: DiscoverPageController,
         controllerAs: 'discoverCtrl',
-        bindToController: true
+        bindToController: true,
+        replace: true
     };
 }
 

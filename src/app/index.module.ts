@@ -7,7 +7,6 @@ import { AppController } from './index.controller';
 import { MainController } from './main/main.controller';
 import { LoginController } from './login/login.controller';
 import { SignupController } from './signup/signup.controller';
-import { BrowseController } from './pages/browse/browse.controller';
 import { ComposerController } from './pages/composer/composer.controller';
 import { CompositionController } from './pages/composition/composition.controller';
 import { CompositionSheetController } from './pages/composition/sheet.controller';
@@ -25,6 +24,7 @@ import { lbSelectDifficulty } from '../app/components/lbSelectDifficulty/lbSelec
 import { lbSelectComposer } from '../app/components/lbSelectComposer/lbSelectComposer.directive';
 import { lbSelectSort } from '../app/components/lbSelectSort/lbSelectSort.directive';
 import { lbHeroComposition } from '../app/components/lbHeroComposition/lbHeroComposition';
+import lbBrowsePage from '../app/pages/browse/browse.directive';
 import lbDiscoverPage from '../app/pages/discover/discover.directive';
 
 declare var malarkey: any;
@@ -48,7 +48,6 @@ module lilybook {
     .controller('MainController', MainController)
     .controller('LoginController', LoginController)
     .controller('SignupController', SignupController)
-    .controller('BrowseController', BrowseController)
     .controller('ComposerController', ComposerController)
     .controller('CompositionController', CompositionController)
     .controller('CompositionSheetController', CompositionSheetController)
@@ -61,5 +60,6 @@ module lilybook {
     .directive('lbSelectDifficulty', lbSelectDifficulty)
     .directive('lbSelectSort', lbSelectSort)
     .directive('lbSelectComposer', lbSelectComposer)
+    .directive('lbBrowsePage', lbBrowsePage)
     .directive('lbDiscoverPage', lbDiscoverPage);
 }

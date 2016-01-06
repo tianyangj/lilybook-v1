@@ -29,9 +29,7 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
     })
     .state('app.browse', {
       url: '/browse?form&level&composer',
-      templateUrl: 'app/pages/browse/browse.html',
-      controller: 'BrowseController',
-      controllerAs: 'browseCtrl'
+      template: '<lb-browse-page></lb-browse-page>'
     })
     .state('app.discover', {
       url: '/discover',

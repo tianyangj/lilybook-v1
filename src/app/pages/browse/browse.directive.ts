@@ -4,13 +4,26 @@ import { IDifficulty } from '../../services/difficulty.model';
 import { IForm } from '../../services/form.model';
 import { ICompositionQuery, CompositionService } from '../../services/composition.service';
 
-/** @ngInject */
-export class BrowseController {
+export default function lbBrowsePage(): angular.IDirective {
+
+    return {
+        restrict: 'E',
+        templateUrl: 'app/pages/browse/browse.html',
+        scope: {},
+        controller: BrowsePageController,
+        controllerAs: 'browseCtrl',
+        bindToController: true,
+        replace: true
+    };
+}
+
+class BrowsePageController {
 
     compositions: IComposition[];
     query: ICompositionQuery = {};
     loading = false;
 
+    /** @ngInject */
     constructor(
         private $rootScope: angular.IRootScopeService,
         private compositionService: CompositionService
