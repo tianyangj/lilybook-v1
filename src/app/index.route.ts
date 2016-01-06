@@ -33,9 +33,7 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
     })
     .state('app.composer', {
       url: '/composer/:vanity',
-      templateUrl: 'app/pages/composer/composer.html',
-      controller: 'ComposerController',
-      controllerAs: 'composerCtrl'
+      template: '<lb-composer-page></lb-composer-page>'
     })
     .state('app.composition', {
       url: '/composition/:id',

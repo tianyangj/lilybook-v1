@@ -3,7 +3,20 @@ import { IComposer } from '../../services/composer.model';
 import { IForm } from '../../services/form.model';
 import { ICompositionQuery, CompositionService } from '../../services/composition.service';
 
-export class ComposerController {
+export default function lbComposerPage(): angular.IDirective {
+
+    return {
+        restrict: 'E',
+        templateUrl: 'app/pages/composer/composer.html',
+        scope: {},
+        controller: ComposerPageController,
+        controllerAs: 'composerCtrl',
+        bindToController: true,
+        replace: true
+    };
+}
+
+class ComposerPageController {
 
     composer: IComposer;
     compositions: IComposition[];
