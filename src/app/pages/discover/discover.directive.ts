@@ -2,9 +2,21 @@ import { IComposer } from '../../services/composer.model';
 import { IForm } from '../../services/form.model';
 import { DefinitionService } from '../../services/definition.service';
 
-export class DiscoverController {
+export default function lbDiscoverPage(): angular.IDirective {
 
-	composers: IComposer[];
+    return {
+        restrict: 'E',
+        templateUrl: 'app/pages/discover/discover.html',
+        scope: {},
+        controller: DiscoverPageController,
+        controllerAs: 'discoverCtrl',
+        bindToController: true
+    };
+}
+
+class DiscoverPageController {
+
+    composers: IComposer[];
 	forms: IForm[];
 
 	/** @ngInject */

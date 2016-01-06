@@ -35,9 +35,7 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
     })
     .state('app.discover', {
       url: '/discover',
-      templateUrl: 'app/pages/discover/discover.html',
-      controller: 'DiscoverController',
-      controllerAs: 'discoverCtrl'
+      template: '<lb-discover-page></lb-discover-page>'
     })
     .state('app.composer', {
       url: '/composer/:vanity',
