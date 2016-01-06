@@ -21,6 +21,7 @@ import { lbSelectDifficulty } from '../app/components/lbSelectDifficulty/lbSelec
 import { lbSelectComposer } from '../app/components/lbSelectComposer/lbSelectComposer.directive';
 import { lbSelectSort } from '../app/components/lbSelectSort/lbSelectSort.directive';
 import { lbHeroComposition } from '../app/components/lbHeroComposition/lbHeroComposition';
+import lbAccountPage from '../app/pages/account/account.directive';
 import lbBrowsePage from '../app/pages/browse/browse.directive';
 import lbComposerPage from '../app/pages/composer/composer.directive';
 import lbDiscoverPage from '../app/pages/discover/discover.directive';
@@ -58,6 +59,7 @@ module lilybook {
     .directive('lbSelectDifficulty', lbSelectDifficulty)
     .directive('lbSelectSort', lbSelectSort)
     .directive('lbSelectComposer', lbSelectComposer)
+    .directive('lbAccountPage', lbAccountPage)
     .directive('lbBrowsePage', lbBrowsePage)
     .directive('lbComposerPage', lbComposerPage)
     .directive('lbDiscoverPage', lbDiscoverPage)

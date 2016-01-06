@@ -62,7 +62,7 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
     })
     .state('app.account', {
       url: '/account',
-      templateUrl: 'app/account/account.html',
+      template: '<lb-account-page></lb-account-page>',
       data: { authRequired: true }
     })
     .state('app.home', {
