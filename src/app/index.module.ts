@@ -25,6 +25,7 @@ import lbAccountPage from '../app/pages/account/account.directive';
 import lbBrowsePage from '../app/pages/browse/browse.directive';
 import lbComposerPage from '../app/pages/composer/composer.directive';
 import lbDiscoverPage from '../app/pages/discover/discover.directive';
+import lbHomePage from '../app/pages/home/home.directive';
 import lbLoginPage from '../app/pages/login/login.directive';
 import lbSignupPage from '../app/pages/signup/signup.directive';
 import lbSplashPage from '../app/pages/splash/splash.directive';
@@ -63,6 +64,7 @@ module lilybook {
     .directive('lbBrowsePage', lbBrowsePage)
     .directive('lbComposerPage', lbComposerPage)
     .directive('lbDiscoverPage', lbDiscoverPage)
+    .directive('lbHomePage', lbHomePage)
     .directive('lbLoginPage', lbLoginPage)
     .directive('lbSignupPage', lbSignupPage)
     .directive('lbSplashPage', lbSplashPage);

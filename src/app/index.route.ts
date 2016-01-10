@@ -67,9 +67,7 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
     })
     .state('app.home', {
       url: '/home',
-      templateUrl: 'app/main/main.html',
-      controller: 'MainController',
-      controllerAs: 'main',
+      template: '<lb-home-page></lb-home-page>',
       data: { authRequired: true }
     });
 
