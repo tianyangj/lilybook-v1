@@ -22,10 +22,10 @@
         </div>
         <div ng-if="!composerCtrl.loading">
             <md-list flex ng-if="composerCtrl.compositions.length">
-                <md-list-item class="md-2-line" ng-repeat="composition in composerCtrl.compositions" ng-click="$state.go('app.composition',{id:composition.id})">
+                <md-list-item class="md-2-line" ng-repeat="composition in composerCtrl.compositions">
                     <span class="md-avatar" style="text-align:center;font-family:cursive;font-size:40px;width:100px;">{{$index+1}}.</span>
                     <div class="md-list-item-text">
-                        <h4 class="md-title" style="font-size:18px">{{composition.title}}</h4>
+                        <h4 class="md-title" style="font-size:18px"><a ui-sref="app.composition({id:composition.id})">{{composition.title}}</a></h4>
                         <p>{{composition.form.name}}, {{composition.rcm.name}}</p>
                     </div>
                 </md-list-item>
