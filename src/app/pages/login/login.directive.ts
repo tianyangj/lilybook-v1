@@ -22,14 +22,20 @@ class LoginPageController {
     constructor(
         private $state: angular.ui.IStateService,
         private $stateParams: any,
+        private $location: angular.ILocationService,
         private accountService: AccountService,
         private toastr: any
     ) { }
 
     logIn() {
         this.accountService.logIn(this.email, this.password).then(() => {
-            const next = this.$stateParams.redirect || 'app.home';
-            this.$state.go(next);
+            if (this.$stateParams.redirect) {
+                this.$state.go(decodeURIComponent(this.$stateParams.redirect));
+            } else if (this.$stateParams.url) {
+                this.$location.url(decodeURIComponent(this.$stateParams.url));
+            } else {
+                this.$state.go('app.home');
+            }
         }).catch(() => {
             this.toastr.error('Invalid Email or Password.', 'Login Error');
         });

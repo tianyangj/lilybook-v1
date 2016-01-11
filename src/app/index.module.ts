@@ -10,6 +10,7 @@ import { CompositionSheetController } from './pages/composition/sheet.controller
 import { GithubContributor } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { AccountService } from '../app/services/account.service';
+import { ActivityService } from '../app/services/activity.service';
 import { CompositionService } from '../app/services/composition.service';
 import { DefinitionService } from '../app/services/definition.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
@@ -20,7 +21,8 @@ import { lbSelectForm } from '../app/components/lbSelectForm/lbSelectForm.direct
 import { lbSelectDifficulty } from '../app/components/lbSelectDifficulty/lbSelectDifficulty.directive';
 import { lbSelectComposer } from '../app/components/lbSelectComposer/lbSelectComposer.directive';
 import { lbSelectSort } from '../app/components/lbSelectSort/lbSelectSort.directive';
-import { lbHeroComposition } from '../app/components/lbHeroComposition/lbHeroComposition';
+import { lbHeroComposition } from '../app/components/lbHeroComposition/lbHeroComposition.directive';
+import { lbLikeComposition } from '../app/components/lbLikeComposition/lbLikeComposition.directive';
 import lbAccountPage from '../app/pages/account/account.directive';
 import lbBrowsePage from '../app/pages/browse/browse.directive';
 import lbComposerPage from '../app/pages/composer/composer.directive';
@@ -45,6 +47,7 @@ module lilybook {
     .service('githubContributor', GithubContributor)
     .service('webDevTec', WebDevTecService)
     .service('accountService', AccountService)
+    .service('activityService', ActivityService)
     .service('compositionService', CompositionService)
     .service('definitionService', DefinitionService)
     .controller('AppController', AppController)
@@ -55,6 +58,7 @@ module lilybook {
     .directive('acmeMalarkey', acmeMalarkey)
     .directive('lbHeader', lbHeader)
     .directive('lbHeroComposition', lbHeroComposition)
+    .directive('lbLikeComposition', lbLikeComposition)
     .directive('lbSidenav', lbSidenav)
     .directive('lbSelectForm', lbSelectForm)
     .directive('lbSelectDifficulty', lbSelectDifficulty)

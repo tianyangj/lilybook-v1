@@ -14,7 +14,7 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
       data: { authNot: true }
     })
     .state('app.login', {
-      url: '/login?redirect',
+      url: '/login?redirect&url',
       template: '<lb-login-page></lb-login-page>',
       data: { authNot: true }
     })

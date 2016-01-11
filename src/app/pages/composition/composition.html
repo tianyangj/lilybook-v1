@@ -8,11 +8,12 @@
     </md-tabs>
     <md-content flex class="md-padding" ui-view>
         <div layout="row" layout-align="center center">
-            <h1 class="md-display-1" flex>{{compositionCtrl.composition.title}}</h1>
-            <lb-like composition="compositionCtrl.composition"></lb-like>
+            <h1 class="md-display-1">{{compositionCtrl.composition.title}}</h1>
+            <lb-like-composition composition="compositionCtrl.composition"></lb-like-composition>
             <lb-todo composition="compositionCtrl.composition"></lb-todo>
+            <span flex></span>
         </div>
-        <p class="md-body-1 md-padding">
+        <p class="md-body-1">
             {{compositionCtrl.composition.description}}
             <a ng-href="{{compositionCtrl.composition.wikipedia}}" target="_blank">More detail on Wikipedia</a>
         </p>
@@ -25,13 +26,13 @@
                     </div>
                 </div>
                 <div class="md-padding" layout="row">
-                    <strong flex="33">Form</strong>
+                    <strong flex="33">Form/Genre</strong>
                     <div flex>
                         <a ui-sref="app.browse({form:compositionCtrl.composition.form.name})">{{compositionCtrl.composition.form.name}}</a>
                     </div>
                 </div>
                 <div class="md-padding" layout="row">
-                    <strong flex="33">Catalogue</strong>
+                    <strong flex="33">Catalogue Number</strong>
                     <div flex>{{compositionCtrl.composition.catalogue}}</div>
                 </div>
                 <div class="md-padding" layout="row" ng-if="compositionCtrl.composition.number">

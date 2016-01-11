@@ -1,4 +1,5 @@
 import { IAccount } from './account.model';
+import { IActivity } from './activity.model';
 import { IComposition } from './composition.model';
 import { IComposer } from './composer.model';
 import { IDifficulty } from './difficulty.model';
@@ -74,5 +75,18 @@ export function sheetMapper(sheet: Parse.Object): ISheet {
         firstPage: sheet.get('firstPage'),
         lastPage: sheet.get('lastPage'),
         pdfUrl: sheet.get('pdf') ? sheet.get('pdf').url() : null
+    } : null;
+}
+
+export function activityMapper(activity: any): IActivity {
+    return activity ? {
+        base: activity,
+        id: activity.id,
+        type: activity.get('type'),
+        fromUser: activity.get('fromUser'),
+        composition: activity.get('composition'),
+        createdAt: activity.createdAt,
+        updatedAt: activity.updatedAt,
+        meta: activity.get('meta')
     } : null;
 }
