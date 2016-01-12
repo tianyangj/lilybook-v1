@@ -78,11 +78,13 @@ export class ActivityService {
         return defer.promise;
     }
 
-    count(type: ActivityType, composition: IComposition): angular.IPromise<number> {
+    count(composition: IComposition, type?: ActivityType): angular.IPromise<number> {
         var defer = this.$q.defer<number>();
         var query = new Parse.Query(this.activityDB);
-        query.equalTo('type', type);
         query.equalTo('composition', composition.base);
+        if (type) {
+            query.equalTo('type', type);
+        }
         query.count().then((count: number) => {
             defer.resolve(count);
         }, (error: Parse.Error) => {
@@ -91,11 +93,13 @@ export class ActivityService {
         return defer.promise;
     }
 
-    list(type: ActivityType, composition: IComposition): angular.IPromise<IActivity[]> {
+    list(composition: IComposition, type?: ActivityType): angular.IPromise<IActivity[]> {
         var defer = this.$q.defer<IActivity[]>();
         var query = new Parse.Query(this.activityDB);
-        query.equalTo('type', type);
         query.equalTo('composition', composition.base);
+        if (type) {
+            query.equalTo('type', type);
+        }
         query.find().then((response: Parse.Object[]) => {
             var activities = response.map(activityMapper);
             defer.resolve(activities);
