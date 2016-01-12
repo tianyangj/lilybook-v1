@@ -23,6 +23,7 @@ import { lbSelectComposer } from '../app/components/lbSelectComposer/lbSelectCom
 import { lbSelectSort } from '../app/components/lbSelectSort/lbSelectSort.directive';
 import { lbHeroComposition } from '../app/components/lbHeroComposition/lbHeroComposition.directive';
 import { lbLikeComposition } from '../app/components/lbLikeComposition/lbLikeComposition.directive';
+import { lbTodoComposition } from '../app/components/lbTodoComposition/lbTodoComposition.directive';
 import lbAccountPage from '../app/pages/account/account.directive';
 import lbBrowsePage from '../app/pages/browse/browse.directive';
 import lbComposerPage from '../app/pages/composer/composer.directive';
@@ -59,6 +60,7 @@ module lilybook {
     .directive('lbHeader', lbHeader)
     .directive('lbHeroComposition', lbHeroComposition)
     .directive('lbLikeComposition', lbLikeComposition)
+    .directive('lbTodoComposition', lbTodoComposition)
     .directive('lbSidenav', lbSidenav)
     .directive('lbSelectForm', lbSelectForm)
     .directive('lbSelectDifficulty', lbSelectDifficulty)

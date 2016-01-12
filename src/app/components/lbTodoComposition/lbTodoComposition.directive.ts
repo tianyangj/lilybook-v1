@@ -4,78 +4,73 @@ import { IAccount } from '../../services/account.model';
 import { IActivity, ActivityType } from '../../services/activity.model';
 import { IComposition } from '../../services/composition.model';
 
-export function lbLikeComposition(): angular.IDirective {
+export function lbTodoComposition(): angular.IDirective {
 
     return {
         restrict: 'E',
         template: `
             <md-button
-                aria-label="Like Composition"
+                aria-label="Add Todo"
                 class="md-raised md-primary"
-                ng-click="ctrl.onLike()">
-                <span ng-if="!ctrl.like">
-                    <md-tooltip>Click to Like</md-tooltip>
-                    <md-icon md-svg-src="assets/svg/ic_thumb_up.svg"></md-icon> Like
+                ng-click="ctrl.onAdd()">
+                <span ng-if="!ctrl.todo">
+                    <md-tooltip>Add to TODO List</md-tooltip>
+                    <md-icon md-svg-src="assets/svg/ic_playlist_add.svg"></md-icon> Add TODO
                 </span>
-                <span ng-if="ctrl.like">
-                    <md-tooltip>Click to Unlike</md-tooltip>
-                    <md-icon md-svg-src="assets/svg/ic_check.svg"></md-icon> Liked
+                <span ng-if="ctrl.todo">
+                    <md-tooltip>Go to TODO List</md-tooltip>
+                    <md-icon md-svg-src="assets/svg/ic_playlist_add_check.svg"></md-icon> In TODO
                 </span>
-			</md-button>
+            </md-button>
 		`,
         scope: {
             composition: '='
         },
-        controller: LikeCompositionController,
+        controller: TodoCompositionController,
         controllerAs: 'ctrl',
         bindToController: true
     };
 }
 
-class LikeCompositionController {
+class TodoCompositionController {
 
     composition: IComposition;
-    like: IActivity;
+    todo: IActivity;
     account: IAccount;
 
     /** @ngInject */
     constructor(
         private $state: angular.ui.IStateService,
         private $location: angular.ILocationService,
-        private accountService: AccountService,
-        private activityService: ActivityService
+        private activityService: ActivityService,
+        private accountService: AccountService
     ) {
         this.account = accountService.current();
         this.activityService.read(
-            ActivityType.Like,
+            ActivityType.Todo,
             this.accountService.current(),
             this.composition
-        ).then((like: IActivity) => {
-            this.like = like;
+        ).then((activity: IActivity) => {
+            this.todo = activity;
         });
     }
 
-    onLike() {
-        if (this.like) {
-            this.activityService.delete(
-                ActivityType.Like,
-                this.account,
-                this.composition
-            ).then(() => {
-                this.like = null;
-            });
-        } else {
+    onAdd() {
+        if (!this.todo) {
             this.activityService.create(
-                ActivityType.Like,
+                ActivityType.Todo,
                 this.account,
-                this.composition
-            ).then((like: IActivity) => {
-                this.like = like;
+                this.composition,
+                { progress: 0 }
+            ).then((todo: IActivity) => {
+                this.todo = todo;
             }).catch((error: any) => {
                 if (error === 'AUTH_REQUIRED') {
                     this.$state.go('app.login', { url: this.$location.path() });
                 }
             });
+        } else {
+            this.$state.go('app.home');
         }
     }
 }
