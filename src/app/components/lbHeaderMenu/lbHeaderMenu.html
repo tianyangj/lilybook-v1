@@ -1,0 +1,98 @@
+<md-menu-bar>
+    <md-menu>
+        <button ng-click="$mdOpenMenu()">
+            Composers
+        </button>
+        <md-menu-content>
+            <md-menu-item>
+                <md-button ui-sref="app.home">
+                    Home
+                </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+            <md-menu-item>
+                <md-menu>
+                    <md-button ng-click="$mdOpenMenu()">Baroque period</md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'bach'})">Johann Sebastian Bach</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-item>
+            <md-menu-item>
+                <md-menu>
+                    <md-button ng-click="$mdOpenMenu()">Classical period</md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'beethoven'})">Ludwig van Beethoven</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'clementi'})">Muzio Clementi</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'dussek'})">Jan Ladislav Dussek</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'haydn'})">Joseph Haydn</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'mozart'})">Wolfgang Amadeus Mozart</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-item>
+            <md-menu-item>
+                <md-menu>
+                    <md-button ng-click="$mdOpenMenu()">Romantic period</md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'chopin'})">Frédéric Chopin</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'czerny'})">Carl Czerny</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'hanon'})">Charles-Louis Hanon</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'kuhlau'})">Friedrich Kuhlau</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'liszt'})">Franz Liszt</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'schubert'})">Franz Schubert</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'tchaikovsky'})">Pyotr Ilyich Tchaikovsky</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-item>
+            <md-menu-item>
+                <md-menu>
+                    <md-button ng-click="$mdOpenMenu()">20th century</md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'debussy'})">Claude Debussy</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'rachmaninoff'})">Sergei Rachmaninoff</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-item>
+            <md-menu-item>
+                <md-menu>
+                    <md-button ng-click="$mdOpenMenu()">Contemporary</md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ui-sref="app.composer({vanity:'yanni'})">Yanni</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+</md-menu-bar>

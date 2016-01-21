@@ -16,6 +16,7 @@ import { DefinitionService } from '../app/services/definition.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
 import { lbHeader } from '../app/components/lbHeader/lbHeader.directive';
+import { lbHeaderMenu } from '../app/components/lbHeaderMenu/lbHeaderMenu.directive';
 import { lbSidenav } from '../app/components/lbSidenav/lbSidenav.directive';
 import { lbSelectForm } from '../app/components/lbSelectForm/lbSelectForm.directive';
 import { lbSelectDifficulty } from '../app/components/lbSelectDifficulty/lbSelectDifficulty.directive';
@@ -58,6 +59,7 @@ module lilybook {
     .directive('acmeNavbar', acmeNavbar)
     .directive('acmeMalarkey', acmeMalarkey)
     .directive('lbHeader', lbHeader)
+    .directive('lbHeaderMenu', lbHeaderMenu)
     .directive('lbHeroComposition', lbHeroComposition)
     .directive('lbLikeComposition', lbLikeComposition)
     .directive('lbTodoComposition', lbTodoComposition)
