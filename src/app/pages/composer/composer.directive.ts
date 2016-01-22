@@ -7,7 +7,7 @@ export default function lbComposerPage(): angular.IDirective {
 
     return {
         restrict: 'E',
-        templateUrl: 'app/pages/composer/composer.html',
+        templateUrl: 'app/pages/composer/composer1.html',
         scope: {},
         controller: ComposerPageController,
         controllerAs: 'composerCtrl',
@@ -20,6 +20,7 @@ class ComposerPageController {
 
     composer: IComposer;
     compositions: IComposition[];
+    compositionsByForm: { [index: string]: IComposition[] };
     query: ICompositionQuery = {};
     loading = false;
 
@@ -33,7 +34,15 @@ class ComposerPageController {
             this.composer = composer;
             _.extend(this.query, { composerId: composer.id });
             this.loading = true;
-            this.updateCompositions();
+            this.compositionService.getCompositions(this.query).then((compositions: IComposition[]) => {
+                console.log(compositions);
+                this.compositions = compositions;
+                this.compositionsByForm = _.groupBy(compositions, (composition: IComposition) => {
+                    return composition.form.name;
+                });
+                console.log(this.compositionsByForm)
+                this.loading = false;
+            });
         });
         $rootScope.$on('selectFormChanged', (event: angular.IAngularEvent, form: IForm) => {
             _.extend(this.query, { formId: form.id });
