@@ -33,6 +33,7 @@ import lbHomePage from '../app/pages/home/home.directive';
 import lbLoginPage from '../app/pages/login/login.directive';
 import lbSignupPage from '../app/pages/signup/signup.directive';
 import lbSplashPage from '../app/pages/splash/splash.directive';
+import lbHomeBanner from '../app/components/home/banner/home-banner.directive';
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -68,6 +69,7 @@ module lilybook {
     .directive('lbSelectDifficulty', lbSelectDifficulty)
     .directive('lbSelectSort', lbSelectSort)
     .directive('lbSelectComposer', lbSelectComposer)
+    .directive('lbHomeBanner', lbHomeBanner)
     .directive('lbAccountPage', lbAccountPage)
     .directive('lbBrowsePage', lbBrowsePage)
     .directive('lbComposerPage', lbComposerPage)
