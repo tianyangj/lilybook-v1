@@ -1,12 +1,41 @@
-<md-dialog aria-label="List dialog">
-    <md-dialog-content>
-        <md-list>
-            <md-list-item ng-repeat="item in items">
-                <p>Number {{item}}</p>
-            </md-list-item>
-        </md-list>
-    </md-dialog-content>
-    <md-dialog-actions>
-        <md-button ng-click="closeDialog()" class="md-primary">Close Dialog</md-button>
-    </md-dialog-actions>
+<md-dialog aria-label="Edit basic info">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Edit basic info</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+                    <md-icon md-svg-src="assets/svg/ic_close.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content class="md-padding">
+            <div layout="row">
+                <md-input-container class="md-block" flex>
+                    <label>First name</label>
+                    <input ng-model="ctrl.account.firstname">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <label>Last Name</label>
+                    <input ng-model="ctrl.account.lastname">
+                </md-input-container>
+            </div>
+            <md-input-container class="md-block">
+                <label>Username</label>
+                <input ng-model="ctrl.account.username">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Location</label>
+                <input ng-model="ctrl.account.profile.location">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Bio</label>
+                <textarea ng-model="ctrl.account.profile.bio" md-maxlength="140"></textarea>
+            </md-input-container>
+        </md-dialog-content>
+        <md-dialog-actions>
+            <md-button ng-click="ctrl.cancel()">Cancel</md-button>
+            <md-button class="md-primary" ng-click="ctrl.save()">Save</md-button>
+        </md-dialog-actions>
+    </form>
 </md-dialog>

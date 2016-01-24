@@ -1,22 +1,22 @@
 <div layout="row" style="padding:16px;background-color:#eeeeee;">
-    <md-card style="width:400px;margin:0;">
+    <md-card style="width:500px;margin:0;">
         <md-card-title>
             <md-card-title-media>
                 <md-icon class="md-media-md" md-svg-icon="assets/svg/avatar-1.svg"></md-icon>
             </md-card-title-media>
             <md-card-title-text style="margin-left:16px;">
                 <span class="md-headline">{{ctrl.account.firstname}} {{ctrl.account.lastname}}</span>
-                <span class="md-body-1" ng-if="ctrl.account.username">{{ctrl.account.username}}</span>
-                <span class="md-subhead" ng-if="!ctrl.account.username" ng-click="ctrl.openProfileEditor()" style="text-decoration:underline;cursor:pointer;">Pick a username</span>
-                <span class="md-body-1" ng-if="ctrl.account.profile.bio">{{ctrl.account.profile.bio}}</span>
-                <span class="md-subhead" ng-if="!ctrl.account.profile.bio" ng-click="ctrl.openProfileEditor()" style="text-decoration:underline;cursor:pointer;">Add your bio</span>
+                <span class="md-body-2" ng-if="ctrl.account.username">http://lilybook.com/profile/{{ctrl.account.username}}</span>
+                <span class="md-subhead" ng-if="!ctrl.account.username" ng-click="ctrl.openProfileEditor($event)" style="text-decoration:underline;cursor:pointer;">Pick a username</span>
                 <span class="md-body-1" ng-if="ctrl.account.profile.location">{{ctrl.account.profile.location}}</span>
-                <span class="md-subhead" ng-if="!ctrl.account.profile.location" ng-click="ctrl.openProfileEditor()" style="text-decoration:underline;cursor:pointer;">Add your location</span>
+                <span class="md-subhead" ng-if="!ctrl.account.profile.location" ng-click="ctrl.openProfileEditor($event)" style="text-decoration:underline;cursor:pointer;">Add your location</span>
+                <span class="md-caption" ng-if="ctrl.account.profile.bio">{{ctrl.account.profile.bio}}</span>
+                <span class="md-subhead" ng-if="!ctrl.account.profile.bio" ng-click="ctrl.openProfileEditor($event)" style="text-decoration:underline;cursor:pointer;">Add your bio</span>
             </md-card-title-text>
         </md-card-title>
     </md-card>
     <div flex></div>
     <div>
-        <md-button class="md-raised md-primary" ng-click="ctrl.openProfileEditor()">Edit Profile</md-button>
+        <md-button class="md-raised md-primary" ng-click="ctrl.openProfileEditor($event)">Edit Profile</md-button>
     </div>
 </div>

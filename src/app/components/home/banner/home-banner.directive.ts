@@ -1,5 +1,6 @@
 import { IAccount } from '../../../services/account.model';
 import { AccountService } from '../../../services/account.service';
+import ProfileEditorService from '../profile-editor/home-profile-editor.service';
 
 export default function lbHomeBanner(): angular.IDirective {
 
@@ -18,12 +19,18 @@ class HomeBannerController {
 
     /** @ngInject */
     constructor(
-        private accountService: AccountService
+        private accountService: AccountService,
+        private profileEditorService: ProfileEditorService
     ) {
         this.account = accountService.current();
     }
 
-    openProfileEditor() {
-        console.log('openProfileEditor');
+    openProfileEditor(event: MouseEvent) {
+        this.profileEditorService.show(event, this.account).then((account: IAccount) => {
+            console.log('suc', account);
+            this.account = account;
+        }).catch(() => {
+            console.log('fail');
+        });
     }
 }

@@ -13,6 +13,7 @@ import { AccountService } from '../app/services/account.service';
 import { ActivityService } from '../app/services/activity.service';
 import { CompositionService } from '../app/services/composition.service';
 import { DefinitionService } from '../app/services/definition.service';
+import ProfileEditorService from '../app/components/home/profile-editor/home-profile-editor.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
 import { lbHeader } from '../app/components/lbHeader/lbHeader.directive';
@@ -53,6 +54,7 @@ module lilybook {
     .service('activityService', ActivityService)
     .service('compositionService', CompositionService)
     .service('definitionService', DefinitionService)
+    .service('profileEditorService', ProfileEditorService)
     .controller('AppController', AppController)
     .controller('MainController', MainController)
     .controller('CompositionController', CompositionController)
