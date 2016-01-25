@@ -12,7 +12,9 @@ export function userMapper(user: Parse.User): IAccount {
         id: user.id,
         email: user.get('email'),
         firstname: user.get('firstname'),
-        lastname: user.get('lastname')
+        lastname: user.get('lastname'),
+        vanity: user.get('vanity'),
+        profile: user.get('profile')
     } : null;
 }
 

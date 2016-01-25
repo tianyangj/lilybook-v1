@@ -1,4 +1,5 @@
 import { IAccount } from '../../../services/account.model';
+import { AccountService } from '../../../services/account.service';
 
 export default class HomeProfileEditor {
 
@@ -28,7 +29,8 @@ class ProfileEditorController {
 
     /** @ngInject */
     constructor(
-        private $mdDialog: angular.material.IDialogService
+        private $mdDialog: angular.material.IDialogService,
+        private accountService: AccountService
     ) { }
 
     cancel() {
@@ -36,6 +38,12 @@ class ProfileEditorController {
     }
 
     save() {
+        if (this.account.vanity) {
+            this.accountService.createVanity(this.account.vanity);
+        }
+        if (this.account.profile) {
+            this.accountService.updateProfile(this.account.profile);
+        }
         this.$mdDialog.hide(this.account);
     }
 }

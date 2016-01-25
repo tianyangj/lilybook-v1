@@ -54,14 +54,42 @@ export class AccountService {
     }
 
     createVanity(vanity: string) {
-        console.log('create', vanity);
+        const defer = this.$q.defer();
+        const account = this.current();
+        account.base.set('vanity', vanity);
+        account.base.save(null, null, null).then((user: Parse.User) => {
+            defer.resolve(userMapper(user));
+        }, (error: Parse.Error) => {
+            defer.reject(error);
+        });
+        return defer.promise;
     }
 
-    readVanity(vanity: string) {
-        console.log('read', vanity);
+    verifyVanity(vanity: string): angular.IPromise<any> {
+        const defer = this.$q.defer();
+        const query = new Parse.Query(Parse.User);
+        query.equalTo('vanity', vanity);
+        query.first().then((user: Parse.User) => {
+            if (!user) {
+                defer.resolve();
+            } else {
+                defer.reject();
+            }
+        }, (error: Parse.Error) => {
+            defer.reject(error);
+        });
+        return defer.promise;
     }
 
     updateProfile(profile: any) {
-        console.log('update', profile);
+        const defer = this.$q.defer();
+        const account = this.current();
+        account.base.set('profile', profile);
+        account.base.save(null, null, null).then((user: Parse.User) => {
+            defer.resolve(userMapper(user));
+        }, (error: Parse.Error) => {
+            defer.reject(error);
+        });
+        return defer.promise;
     }
 }

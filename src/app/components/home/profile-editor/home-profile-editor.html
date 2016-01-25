@@ -1,5 +1,5 @@
 <md-dialog aria-label="Edit basic info">
-    <form>
+    <form name="profileForm">
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2>Edit basic info</h2>
@@ -22,7 +22,8 @@
             </div>
             <md-input-container class="md-block">
                 <label>Username</label>
-                <input ng-model="ctrl.account.username">
+                <input name="vanity" ng-model="ctrl.account.vanity" ng-model-options="{ debounce: 300 }" lb-vanity>
+                <p class="md-caption" ng-show="profileForm.vanity.$error.vanity">This username is already taken!</p>
             </md-input-container>
             <md-input-container class="md-block">
                 <label>Location</label>

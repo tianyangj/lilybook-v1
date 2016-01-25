@@ -6,8 +6,8 @@
             </md-card-title-media>
             <md-card-title-text style="margin-left:16px;">
                 <span class="md-headline">{{ctrl.account.firstname}} {{ctrl.account.lastname}}</span>
-                <span class="md-body-2" ng-if="ctrl.account.username">http://lilybook.com/profile/{{ctrl.account.username}}</span>
-                <span class="md-subhead" ng-if="!ctrl.account.username" ng-click="ctrl.openProfileEditor($event)" style="text-decoration:underline;cursor:pointer;">Pick a username</span>
+                <span class="md-body-2" ng-if="ctrl.account.vanity">http://lilybook.com/profile/{{ctrl.account.vanity}}</span>
+                <span class="md-subhead" ng-if="!ctrl.account.vanity" ng-click="ctrl.openProfileEditor($event)" style="text-decoration:underline;cursor:pointer;">Pick a username</span>
                 <span class="md-body-1" ng-if="ctrl.account.profile.location">{{ctrl.account.profile.location}}</span>
                 <span class="md-subhead" ng-if="!ctrl.account.profile.location" ng-click="ctrl.openProfileEditor($event)" style="text-decoration:underline;cursor:pointer;">Add your location</span>
                 <span class="md-caption" ng-if="ctrl.account.profile.bio">{{ctrl.account.profile.bio}}</span>
