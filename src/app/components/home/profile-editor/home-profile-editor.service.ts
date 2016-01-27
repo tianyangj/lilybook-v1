@@ -26,9 +26,11 @@ export default class HomeProfileEditor {
 class ProfileEditorController {
 
     private account: IAccount;
+    private vanity: string;
 
     /** @ngInject */
     constructor(
+        private $q: angular.IQService,
         private $mdDialog: angular.material.IDialogService,
         private accountService: AccountService
     ) { }
@@ -38,12 +40,19 @@ class ProfileEditorController {
     }
 
     save() {
-        if (this.account.vanity) {
-            this.accountService.createVanity(this.account.vanity);
+        let promises = [];
+        if (this.vanity) {
+            promises.push(this.accountService.createVanity(this.vanity));
         }
         if (this.account.profile) {
-            this.accountService.updateProfile(this.account.profile);
+            promises.push(this.accountService.updateProfile(this.account.profile));
         }
-        this.$mdDialog.hide(this.account);
+        this.$q.all(promises).then((responses: any) => {
+            if (responses.length) {
+                this.$mdDialog.hide(responses[0]);
+            } else {
+                this.$mdDialog.cancel();
+            }
+        });
     }
 }

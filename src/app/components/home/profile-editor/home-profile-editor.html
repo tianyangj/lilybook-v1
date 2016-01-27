@@ -20,9 +20,9 @@
                     <input ng-model="ctrl.account.lastname">
                 </md-input-container>
             </div>
-            <md-input-container class="md-block">
+            <md-input-container class="md-block" ng-if="!ctrl.account.vanity">
                 <label>Username</label>
-                <input name="vanity" ng-model="ctrl.account.vanity" ng-model-options="{ debounce: 300 }" lb-vanity>
+                <input name="vanity" ng-model="ctrl.vanity" ng-model-options="{ debounce: 300 }" lb-vanity>
                 <p class="md-caption" ng-show="profileForm.vanity.$error.vanity">This username is already taken!</p>
             </md-input-container>
             <md-input-container class="md-block">
