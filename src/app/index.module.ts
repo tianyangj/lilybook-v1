@@ -35,6 +35,7 @@ import lbLoginPage from '../app/pages/login/login.directive';
 import lbSignupPage from '../app/pages/signup/signup.directive';
 import lbSplashPage from '../app/pages/splash/splash.directive';
 import lbHomeBanner from '../app/components/home/banner/home-banner.directive';
+import lbHomeTabs from '../app/components/home/tabs/home-tabs.directive';
 import lbVanity from '../app/components/home/profile-editor/vanity-validator.directive';
 
 declare var malarkey: any;
@@ -73,6 +74,7 @@ module lilybook {
         .directive('lbSelectSort', lbSelectSort)
         .directive('lbSelectComposer', lbSelectComposer)
         .directive('lbHomeBanner', lbHomeBanner)
+        .directive('lbHomeTabs', lbHomeTabs)
         .directive('lbVanity', lbVanity)
         .directive('lbAccountPage', lbAccountPage)
         .directive('lbBrowsePage', lbBrowsePage)
